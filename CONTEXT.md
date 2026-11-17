@@ -61,7 +61,7 @@ Ispirata al corallo rosso e al mare di Alghero.
   - bianco sporco per il testo
   - tinta mare secondaria per i dettagli
 - **Tipografia**: da scegliere (un titolo con carattere + un testo molto leggibile).
-- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png` nella radice del progetto, fuori da `public/`, non ancora usata nel sito. Sorgenti nella radice: `red-coral.png` (simbolo approvato) e `red-coral-text-inverted.png` (testo).
+- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png` nella radice del progetto, fuori da `public/`, non ancora usata nel sito. Sorgenti nella radice (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 
