@@ -12,7 +12,7 @@ Il sito serve a:
 - rendere scaricabili i giochi e le build alfa/beta, con le varie versioni;
 - pubblicare aggiornamenti in stile blog (devlog, novità, note di rilascio).
 
-Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla, e la scelta va ricordata.
+Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: libreria di traduzione a runtime (da scegliere tra le compatibili con Angular 22, es. Transloco o ngx-translate).
 
 ## 2. Stack e hosting
 
@@ -48,7 +48,7 @@ Tutto statico, tenuto nel repo come file (nessun CMS).
 - **Versione**: numero, data, canale (alfa/beta/stabile), note di rilascio, link di download (Release GitHub) per piattaforma.
 - **Post**: slug, titolo, data, riassunto, corpo, gioco collegato (opzionale).
 
-Formato proposto: dati dei giochi in JSON, post in Markdown con front matter. Da confermare (punti aperti).
+Dati dei giochi e delle versioni (con i link di download alle GitHub Releases) in **JSON scritto a mano**: a ogni release si aggiunge una riga. Post: Markdown con front matter proposto, da confermare (punti aperti).
 
 ## 5. Direzione visiva
 
@@ -92,9 +92,7 @@ Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubbli
 
 ## 8. Punti aperti
 
-- **Tecnica di traduzione**: libreria a runtime (cambio lingua senza ricaricare) oppure i18n integrato di Angular (un build per lingua).
 - **Formato dei post**: Markdown con libreria di rendering oppure HTML/componenti scritti a mano.
-- **Download**: lista versioni scritta a mano nel JSON oppure letta dall'API delle GitHub Releases.
 - **Stile grafico del logo** e palette definitiva.
 - Dominio personale al posto di `github.io`: per ora no.
 - Analytics e cookie: nessuno per ora.
