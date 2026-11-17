@@ -25,12 +25,17 @@ import { GAMES } from './games.data';
           <dt>{{ 'games.detail.platforms' | transloco }}</dt>
           <dd>{{ 'games.items.' + g.slug + '.platforms' | transloco }}</dd>
         </dl>
-        <p>{{ 'games.items.' + g.slug + '.about' | transloco }}</p>
-        @for (s of g.screenshots; track s) {
-          <figure>
-            <img [src]="s" [alt]="'games.detail.screenshotAlt' | transloco" width="1280" height="720" />
-          </figure>
-        }
+        <div class="text">
+          <p>{{ 'games.items.' + g.slug + '.about' | transloco }}</p>
+          @for (s of g.screenshots; track s) {
+            <figure>
+              <img [src]="s" [alt]="'games.detail.screenshotAlt' | transloco" width="1280" height="720" />
+              <figcaption>{{ 'games.detail.screenshotCaption' | transloco }}</figcaption>
+            </figure>
+          }
+          <p>{{ 'games.items.' + g.slug + '.p2' | transloco }}</p>
+          <p>{{ 'games.items.' + g.slug + '.p3' | transloco }}</p>
+        </div>
         <h2>{{ 'games.detail.downloads' | transloco }}</h2>
         @if (g.downloads.length) {
           <ul>
@@ -75,8 +80,22 @@ import { GAMES } from './games.data';
       margin: 0;
       color: var(--color-muted);
     }
+    /* flow-root: il testo scorre attorno all'immagine e il titolo Download parte sotto di essa */
+    .text {
+      display: flow-root;
+    }
+    /* immagine nel testo, a destra, come in un articolo; a tutta larghezza su schermi stretti */
     figure {
-      margin: var(--space-4) 0;
+      float: right;
+      width: min(45%, 24rem);
+      margin: var(--space-1) 0 var(--space-3) var(--space-4);
+    }
+    @media (max-width: 40rem) {
+      figure {
+        float: none;
+        width: 100%;
+        margin-inline: 0;
+      }
     }
     figure img {
       display: block;
@@ -86,6 +105,11 @@ import { GAMES } from './games.data';
       padding: 0;
       background: none;
       border-radius: var(--radius);
+    }
+    figcaption {
+      margin-top: var(--space-1);
+      font-size: 0.85rem;
+      color: var(--color-muted);
     }
     dl {
       display: grid;
