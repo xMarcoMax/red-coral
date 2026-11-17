@@ -28,6 +28,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
   padding-block: var(--space-3);
 }
 
@@ -46,4 +48,23 @@ footer {
 .brand img {
   height: 2.5rem;
   width: auto;
+}
+
+nav {
+  display: flex;
+  gap: var(--space-4);
+  margin-inline: auto var(--space-4);
+
+  a {
+    color: var(--color-muted);
+    text-decoration: none;
+    &:hover,
+    &.active {
+      color: var(--color-text);
+    }
+    &.active {
+      text-decoration: underline var(--color-coral) 2px;
+      text-underline-offset: 0.4em;
+    }
+  }
 }

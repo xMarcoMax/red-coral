@@ -31,14 +31,15 @@ Vincoli di GitHub Pages:
 
 ## 3. Struttura del sito (pagine)
 
-| Route | Contenuto |
-|---|---|
-| `/` | Home: presentazione, gioco in evidenza, ultimi post |
-| `/giochi` | Elenco dei giochi |
-| `/giochi/:slug` | Scheda gioco: descrizione, screenshot, stato, download con tutte le versioni. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile |
-| `/blog` | Elenco post |
-| `/blog/:slug` | Singolo post |
-| `/chi-sono` | Chi c'è dietro Red Coral, contatti, link social |
+| Route | Contenuto | Stato |
+|---|---|---|
+| `/` | Home: presentazione, gioco in evidenza, ultimi post | segnaposto |
+| `/giochi` | Elenco dei giochi: un link per gioco | fatta (elenco semplice) |
+| `/giochi/:slug` | Scheda gioco: descrizione, screenshot, stato, download con tutte le versioni. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile | modello segnaposto (`game-template`) |
+| `/chi-siamo` | Chi c'è dietro Red Coral, contatti, link social | solo "Work in progress" |
+| `/blog`, `/blog/:slug` | Elenco post e singolo post | da fare |
+
+Navigazione nell'header: Home, Giochi, Chi siamo (blog quando esiste). Ogni altra route torna alla home. I giochi sono in `src/app/games/games.data.ts` (solo lo slug); i testi di ogni gioco in `public/i18n/*.json` sotto `games.items.<slug>`. Per aggiungere un gioco: slug nell'elenco + testi in entrambe le lingue.
 
 ## 4. Modello dei contenuti
 
@@ -82,12 +83,14 @@ Design system minimo fatto: variabili CSS, reset, classe `.container`, shell con
 
 Internazionalizzazione it/en fatta (rilevamento browser, selettore, lingua ricordata). Verificata con build e test, non ancora aperta in un browser.
 
+Navigazione con tre pagine (Home, Giochi, Chi siamo) e pagina modello del gioco.
+
 Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubblicato mostra una pagina vuota.
 
 ## 7. Prossimi passi (in ordine)
 
 1. Scrivere i modelli e un servizio che legge i contenuti (giochi, post).
-2. Pagina elenco giochi (`/giochi`, vuota finché non esistono giochi) e pagina modello del singolo gioco, base per le pagine future.
+2. Layout definitivo dell'elenco giochi (riga con icona a sinistra, titolo e descrizione con genere a destra) e contenuti veri del modello.
 3. Home, blog, chi sono.
 4. Collegare i download alle GitHub Releases.
 5. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.

@@ -4,5 +4,30 @@
   },
   "lang": {
     "label": "Lingua"
+  },
+  "nav": {
+    "label": "Principale",
+    "home": "Home",
+    "games": "Giochi",
+    "about": "Chi siamo"
+  },
+  "games": {
+    "title": "Giochi",
+    "back": "Torna ai giochi",
+    "notFound": "Gioco non trovato",
+    "detail": {
+      "downloads": "Download",
+      "noDownloads": "Nessun download disponibile per ora."
+    },
+    "items": {
+      "game-template": {
+        "title": "Modello di gioco",
+        "genre": "Genere",
+        "description": "Pagina segnaposto che fa da modello di base per ogni futura pagina di gioco."
+      }
+    }
+  },
+  "about": {
+    "wip": "Lavori in corso"
   }
 }

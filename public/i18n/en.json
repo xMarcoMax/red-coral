@@ -4,5 +4,30 @@
   },
   "lang": {
     "label": "Language"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Home",
+    "games": "Games",
+    "about": "About us"
+  },
+  "games": {
+    "title": "Games",
+    "back": "Back to games",
+    "notFound": "Game not found",
+    "detail": {
+      "downloads": "Downloads",
+      "noDownloads": "No downloads available yet."
+    },
+    "items": {
+      "game-template": {
+        "title": "Game template",
+        "genre": "Genre",
+        "description": "Placeholder page that serves as the base model for every future game page."
+      }
+    }
+  },
+  "about": {
+    "wip": "Work in progress"
   }
 }

@@ -61,6 +61,10 @@ img {
   height: auto;
 }
 
+main {
+  padding-block: var(--space-5);
+}
+
 .container {
   width: min(100% - 2 * var(--space-3), var(--container));
   margin-inline: auto;
