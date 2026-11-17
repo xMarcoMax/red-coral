@@ -87,7 +87,7 @@ const FLAGS: Record<Lang, string> = { en: 'flags/gb.svg', it: 'flags/it.svg' };
       object-fit: cover;
       border-radius: 2px;
     }
-    /* barretta alta quanto il testo: stessa distanza dall'alto e dal basso del padding */
+    /* mezzaluna alta quanto il testo: stessa distanza dall'alto e dal basso del padding */
     li button[aria-current='true'] {
       color: var(--color-text);
       &::before {
@@ -96,8 +96,9 @@ const FLAGS: Record<Lang, string> = { en: 'flags/gb.svg', it: 'flags/it.svg' };
         left: 0;
         top: var(--space-2);
         bottom: var(--space-2);
-        width: 2px;
-        background: var(--color-coral);
+        width: 0.5rem;
+        border-left: 2px solid var(--color-coral);
+        border-radius: 0.5rem 0 0 0.5rem;
       }
     }
   `,
