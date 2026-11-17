@@ -5,7 +5,12 @@ import { GameDetail } from './game-detail';
 import { Games } from './games';
 
 const en = {
-  games: { title: 'Games', notFound: 'Game not found', items: { 'game-template': { title: 'Template' } } },
+  games: {
+    title: 'Games',
+    notFound: 'Game not found',
+    detail: { downloads: 'Downloads' },
+    items: { 'game-template': { title: 'Template', description: 'Short text', genre: 'Adventure' } },
+  },
 };
 const transloco = TranslocoTestingModule.forRoot({
   langs: { en },
@@ -17,19 +22,22 @@ describe('Games', () => {
     TestBed.configureTestingModule({ imports: [transloco], providers: [provideRouter([])] }),
   );
 
-  it("l'elenco collega ogni gioco alla sua pagina", () => {
+  it("l'elenco ha una riga per gioco con titolo, descrizione e genere, e collega alla sua pagina", () => {
     const f = TestBed.createComponent(Games);
     f.detectChanges();
-    const a: HTMLAnchorElement = f.nativeElement.querySelector('a');
+    const a: HTMLAnchorElement = f.nativeElement.querySelector('a.row');
     expect(a.getAttribute('href')).toBe('/giochi/game-template');
-    expect(a.textContent).toContain('Template');
+    expect(a.querySelector('h2')!.textContent).toBe('Template');
+    expect(a.querySelector('p')!.textContent).toContain('Short text');
+    expect(a.querySelector('p')!.textContent).toContain('Adventure');
   });
 
-  it('la pagina gioco mostra il titolo, o "non trovato" se lo slug non esiste', () => {
+  it('la pagina gioco mostra titolo e download, o "non trovato" se lo slug non esiste', () => {
     const ok = TestBed.createComponent(GameDetail);
     ok.componentRef.setInput('slug', 'game-template');
     ok.detectChanges();
     expect(ok.nativeElement.querySelector('h1').textContent).toContain('Template');
+    expect(ok.nativeElement.querySelector('ul a').getAttribute('href')).toBe('downloads/test-download.txt');
 
     const ko = TestBed.createComponent(GameDetail);
     ko.componentRef.setInput('slug', 'boh');

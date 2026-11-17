@@ -11,20 +11,75 @@ import { GAMES } from './games.data';
   template: `
     <main class="container">
       @if (game(); as g) {
-        <h1>{{ 'games.items.' + g.slug + '.title' | transloco }}</h1>
-        <p class="genre">{{ 'games.items.' + g.slug + '.genre' | transloco }}</p>
-        <p>{{ 'games.items.' + g.slug + '.description' | transloco }}</p>
+        <header>
+          <img [src]="g.icon" alt="" width="160" height="160" />
+          <div>
+            <h1>{{ 'games.items.' + g.slug + '.title' | transloco }}</h1>
+            <p class="genre">{{ 'games.items.' + g.slug + '.genre' | transloco }}</p>
+            <p>{{ 'games.items.' + g.slug + '.description' | transloco }}</p>
+          </div>
+        </header>
+        <dl>
+          <dt>{{ 'games.detail.status' | transloco }}</dt>
+          <dd>{{ 'games.items.' + g.slug + '.status' | transloco }}</dd>
+          <dt>{{ 'games.detail.platforms' | transloco }}</dt>
+          <dd>{{ 'games.items.' + g.slug + '.platforms' | transloco }}</dd>
+        </dl>
+        <p>{{ 'games.items.' + g.slug + '.about' | transloco }}</p>
         <h2>{{ 'games.detail.downloads' | transloco }}</h2>
-        <p>{{ 'games.detail.noDownloads' | transloco }}</p>
+        @if (g.downloads.length) {
+          <ul>
+            @for (d of g.downloads; track d.file) {
+              <li>
+                <a [href]="d.file" download>{{ d.label }}</a>
+              </li>
+            }
+          </ul>
+        } @else {
+          <p>{{ 'games.detail.noDownloads' | transloco }}</p>
+        }
       } @else {
         <h1>{{ 'games.notFound' | transloco }}</h1>
       }
-      <a routerLink="/giochi">{{ 'games.back' | transloco }}</a>
+      <p>
+        <a routerLink="/giochi">{{ 'games.back' | transloco }}</a>
+      </p>
     </main>
   `,
   styles: `
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    img {
+      width: clamp(6rem, 25vw, 10rem);
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: contain;
+      padding: var(--space-3);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    h1 {
+      margin: 0;
+    }
     .genre {
+      margin: 0;
       color: var(--color-muted);
+    }
+    dl {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: var(--space-1) var(--space-4);
+    }
+    dt {
+      color: var(--color-muted);
+    }
+    dd {
+      margin: 0;
     }
   `,
 })

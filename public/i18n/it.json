@@ -16,14 +16,19 @@
     "back": "Torna ai giochi",
     "notFound": "Gioco non trovato",
     "detail": {
+      "status": "Stato",
+      "platforms": "Piattaforme",
       "downloads": "Download",
       "noDownloads": "Nessun download disponibile per ora."
     },
     "items": {
       "game-template": {
-        "title": "Modello di gioco",
-        "genre": "Genere",
-        "description": "Pagina segnaposto che fa da modello di base per ogni futura pagina di gioco."
+        "title": "Nome Gioco",
+        "genre": "Avventura",
+        "description": "Un gioco divertente che ti appassionerà",
+        "status": "Alfa",
+        "platforms": "Windows",
+        "about": "Questa pagina è un modello: ogni futura pagina di gioco parte da qui. Sostituisci nome, testi, immagine e download con quelli veri."
       }
     }
   },

@@ -16,14 +16,19 @@
     "back": "Back to games",
     "notFound": "Game not found",
     "detail": {
+      "status": "Status",
+      "platforms": "Platforms",
       "downloads": "Downloads",
       "noDownloads": "No downloads available yet."
     },
     "items": {
       "game-template": {
-        "title": "Game template",
-        "genre": "Genre",
-        "description": "Placeholder page that serves as the base model for every future game page."
+        "title": "Game Name",
+        "genre": "Adventure",
+        "description": "A fun game that will hook you",
+        "status": "Alpha",
+        "platforms": "Windows",
+        "about": "This page is a template: every future game page starts from here. Replace the name, the texts, the image and the downloads with the real ones."
       }
     }
   },
