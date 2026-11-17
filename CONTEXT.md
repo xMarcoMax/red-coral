@@ -12,7 +12,7 @@ Il sito serve a:
 - rendere scaricabili i giochi e le build alfa/beta, con le varie versioni;
 - pubblicare aggiornamenti in stile blog (devlog, novità, note di rilascio).
 
-Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: **Transloco** (`@jsverse/transloco`), traduzioni in `public/i18n/{en,it}.json`, caricate con URL relativo (rispetta il base href). Logica in `src/app/i18n/language.service.ts` (scelta salvata in `localStorage`, altrimenti lingua del browser) e selettore a tendina nell'header (icona del mondo; voci con il nome nella propria lingua e la bandierina a destra, `public/flags/`; la lingua attiva ha una mezzaluna corallo a sinistra alta quanto il testo). I testi nei template usano la pipe `transloco`; ogni testo nuovo va aggiunto in entrambi i file JSON.
+Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: **Transloco** (`@jsverse/transloco`), traduzioni in `public/i18n/{en,it}.json`, caricate con URL relativo (rispetta il base href). Logica in `src/app/i18n/language.service.ts` (scelta salvata in `localStorage`, altrimenti lingua del browser) e selettore a tendina nell'header (icona del mondo; voci con il nome nella propria lingua e la bandierina a destra, `public/images/flags/`; la lingua attiva ha una mezzaluna corallo a sinistra alta quanto il testo). I testi nei template usano la pipe `transloco`; ogni testo nuovo va aggiunto in entrambi i file JSON.
 
 ## 2. Stack e hosting
 
@@ -47,7 +47,7 @@ Gli indirizzi delle pagine sono in inglese, come il codice, anche se il sito è 
 
 **Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`; lo screenshot segnaposto (16:9, con il simbolo) è `public/content/games/game-template/screenshot-1.svg`, inserito nel testo con la sintassi delle immagini, a destra con il testo che scorre attorno (larghezza massima circa 24 rem, a tutta larghezza su telefono) e una didascalia, per mostrare come appaiono le immagini di gioco. Il nome del file nel link non si traduce.
 
-**Home**: titolo "Red Coral" e una frase, poi due showreel (`src/app/home/showreel.ts`): "Ultimi giochi" e "Ultimi post", uno sopra l'altro. Ognuno mostra gli ultimi 3 contenuti per `date` (più recente prima), uno alla volta per circa 5,5 secondi, con dissolvenza verso sinistra; frecce e puntini scorrono a mano, e l'animazione si ferma con mouse, tocco o focus (e non parte con "riduci animazioni"). Se i contenuti sono meno di 3, i posti mancanti sono schede vuote con `public/placeholder.svg`. Nei giochi `date` è un dato interno (ultimo aggiornamento, non si vede), da aggiornare a ogni modifica della pagina.
+**Home**: titolo "Red Coral" e una frase, poi due showreel (`src/app/home/showreel.ts`): "Ultimi giochi" e "Ultimi post", uno sopra l'altro. Ognuno mostra gli ultimi 3 contenuti per `date` (più recente prima), uno alla volta per circa 5,5 secondi, con dissolvenza verso sinistra; frecce e puntini scorrono a mano, e l'animazione si ferma con mouse, tocco o focus (e non parte con "riduci animazioni"). Se i contenuti sono meno di 3, i posti mancanti sono schede vuote con `public/images/placeholder.svg`. Nei giochi `date` è un dato interno (ultimo aggiornamento, non si vede), da aggiornare a ogni modifica della pagina.
 
 Navigazione nell'header: Home, Giochi, Blog, Chi siamo. Ogni altra route torna alla home.
 
@@ -72,7 +72,7 @@ Ispirata al corallo rosso e al mare di Alghero.
   - bianco sporco per il testo
   - tinta mare secondaria per i dettagli
 - **Tipografia**: da scegliere (un titolo con carattere + un testo molto leggibile).
-- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png` nella radice del progetto, fuori da `public/`, non ancora usata nel sito. Versioni vettoriali (SVG a colori piatti, un livello per colore, ottenute dai PNG con potrace): `red-coral.svg` (simbolo), `red-coral-text.svg` (scritta), `red-coral-vertical-logo.svg` (insieme). Versione orizzontale (simbolo a sinistra, scritta a destra, stessa base e stesse proporzioni dell'header del sito: scritta al 70% dell'altezza del simbolo): `red-coral-horizontal-logo.svg` e `.png` (2855×620, trasparente), ottenuta componendo `red-coral.svg` e `red-coral-text.svg`. Nell'header il simbolo è il PNG `public/logo.png` e la scritta è `public/red-coral-text.svg` (copia di `red-coral-text.svg` della radice, con testo alternativo "Red Coral"); `red-coral.svg` (simbolo) è pronto per sostituire il PNG e per generare le icone. Sorgenti raster nella radice (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
+- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. **Tutte le immagini del sito che non appartengono a una pagina di gioco o di post stanno in `public/images/`** (si pubblicano con il sito): `logo/` (tutte le versioni del logo), `flags/` (bandierine della tendina delle lingue), `favicon.ico`, `apple-touch-icon.png`, `placeholder.svg` (scheda vuota degli showreel). Le immagini di un gioco o di un post restano nella sua cartella in `public/content/`. In `public/images/logo/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi; è quello dell'header). Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png`, non ancora usata nel sito. Versioni vettoriali (SVG a colori piatti, un livello per colore, ottenute dai PNG con potrace): `red-coral.svg` (simbolo), `red-coral-text.svg` (scritta, usata nell'header con testo alternativo "Red Coral"), `red-coral-vertical-logo.svg` (insieme). Versione orizzontale (simbolo a sinistra, scritta a destra, stessa base e stesse proporzioni dell'header del sito: scritta al 70% dell'altezza del simbolo): `red-coral-horizontal-logo.svg` e `.png` (2855×620, trasparente), ottenuta componendo `red-coral.svg` e `red-coral-text.svg`. `red-coral.svg` (simbolo) è pronto per sostituire il PNG dell'header e per generare le icone. Sorgenti raster (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 
@@ -81,21 +81,13 @@ I colori, i font e le spaziature sono variabili CSS in `src/styles.scss` (`--col
 ## 6. Stato attuale
 
 Fatto:
-- Progetto Angular creato in questa cartella (nome `red-coral`, SCSS, routing, standalone, no SSR).
-- Pages attivo con deploy automatico via Actions.
-- Repo git inizializzato e pubblicato su GitHub (`xMarcoMax/red-coral`, pubblico).
-- Boilerplate di default rimosso: `app.html` contiene solo `<router-outlet />`.
-- Build e test passano.
+- Sito online su GitHub Pages con deploy automatico via Actions (repo `xMarcoMax/red-coral`, pubblico).
+- Design system minimo (variabili CSS, reset, `.container`), header con simbolo e scritta del logo, footer, selettore di lingua it/en.
+- Home con i due showreel, elenco e pagina dei giochi, blog con elenco e pagina dei post, tutti basati su file Markdown (vedi §3). Chi siamo è ancora un segnaposto.
+- Primo gioco vero: **Beatch Slash!** (`public/content/games/beatch-slash/`): tower defense a ondate 2D top-down, in sviluppo in Godot (progetto in `C:\Users\stefa\Documents\Progetti\GodotProjects\beatch-slash!`). Per ora la pagina ha solo icona (la copertina quadrata, ridotta a 512 px; l'originale `beatch-slash-cover-square.png` sta nella radice di questo progetto), titolo, genere e descrizione; stato, piattaforme, testo e download verranno dopo. `game-template` e `post-template` restano come modelli.
+- Build e test passano. Le pagine sono state viste in un browser solo con screenshot di prova.
 
 Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e si rigenera da solo a ogni commit sul codice. I file di documentazione vanno aggiornati a mano con `/graphify . --update`.
-
-Design system minimo fatto: variabili CSS, reset, classe `.container`, shell con header (solo il marchio) e footer. La navigazione comparirà man mano che esistono le pagine.
-
-Internazionalizzazione it/en fatta (rilevamento browser, selettore, lingua ricordata). Verificata con build e test, non ancora aperta in un browser.
-
-Navigazione con tre pagine (Home, Giochi, Chi siamo) e pagina modello del gioco.
-
-Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubblicato mostra una pagina vuota.
 
 ## 7. Prossimi passi (in ordine)
 

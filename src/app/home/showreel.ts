@@ -42,7 +42,7 @@ const INTERVAL_MS = 5500;
             </a>
           } @else {
             <div class="card placeholder" [class]="state($index)" [attr.inert]="inert($index)" aria-hidden="true">
-              <img src="placeholder.svg" alt="" width="1280" height="720" />
+              <img src="images/placeholder.svg" alt="" width="1280" height="720" />
             </div>
           }
         }

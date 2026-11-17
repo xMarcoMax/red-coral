@@ -64,3 +64,9 @@ test('errori chiari su front matter, date e campi sbagliati', () => {
     /"downloads" è diverso/,
   );
 });
+
+test('gioco: stato e piattaforme sono facoltativi', () => {
+  const md = '---\ntitle: T\nicon: i.png\ndate: 2026-01-01\ngenre: G\n---\n';
+  const [g] = buildIndex(folder({ 'g/it.md': md }), 'games');
+  assert.deepEqual(g.it, { excerpt: '', title: 'T', genre: 'G' });
+});

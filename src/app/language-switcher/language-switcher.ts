@@ -5,7 +5,7 @@ import { Lang, LanguageService } from '../i18n/language.service';
 
 // Nomi nella loro lingua: chi non capisce la lingua attiva riconosce comunque la propria
 const NAMES: Record<Lang, string> = { en: 'English', it: 'Italiano' };
-const FLAGS: Record<Lang, string> = { en: 'flags/gb.svg', it: 'flags/it.svg' };
+const FLAGS: Record<Lang, string> = { en: 'images/flags/gb.svg', it: 'images/flags/it.svg' };
 
 @Component({
   selector: 'app-language-switcher',

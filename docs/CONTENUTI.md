@@ -61,7 +61,8 @@ Testo della pagina del gioco...
 | `date` | tutti, obbligatoria | formato `AAAA-MM-GG`. Decide l'ordine degli elenchi (dal più recente) e quali 3 contenuti compaiono nella home. **Aggiornala ogni volta che modifichi la pagina.** Nei post compare sotto il titolo; per i giochi è un dato interno e non si vede |
 | `description` | facoltativo | testo dell'anteprima nell'elenco. Se manca, si usano le prime righe del testo |
 | `icon` | giochi obbligatorio, post facoltativo | file dell'icona nella cartella (quadrata, PNG o SVG) |
-| `genre`, `status`, `platforms` | giochi, obbligatori | genere, stato (alfa, beta, in sviluppo, rilasciato) e piattaforme, scritti come devono comparire |
+| `genre` | giochi, obbligatorio | genere, scritto come deve comparire |
+| `status`, `platforms` | giochi, facoltativi | stato (alfa, beta, in sviluppo, rilasciato) e piattaforme, scritti come devono comparire. Se mancano, la riga non compare nella pagina |
 | `download` | giochi, si può ripetere | `Etichetta \| indirizzo`: l'etichetta è il testo del link e non si traduce. L'indirizzo è un link `https://` (la GitHub Release) oppure un percorso relativo a `public/` |
 
 - `date`, `icon` e `download` devono essere **uguali** in `it.md` e in `en.md`: se sono diversi `npm run content` si ferma. `title`, `genre`, `status`, `platforms` e `description` si scrivono nella lingua del file.

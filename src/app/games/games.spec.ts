@@ -93,4 +93,17 @@ describe('Games', () => {
     f.detectChanges();
     expect(f.nativeElement.querySelector('h1').textContent).toBe('Non trovato');
   });
+
+  it('senza stato e piattaforme la pagina non mostra quelle righe', () => {
+    const f = TestBed.createComponent(GameDetail);
+    f.componentRef.setInput('slug', 'g1');
+    f.detectChanges();
+    const { status, platforms, ...bare } = index[0].it;
+    TestBed.inject(HttpTestingController)
+      .expectOne('content/games/index.json')
+      .flush([{ ...index[0], it: bare, en: bare }]);
+    f.detectChanges();
+    expect(f.nativeElement.querySelector('h1').textContent).toBe('Titolo');
+    expect(f.nativeElement.querySelector('dl')).toBeNull();
+  });
 });

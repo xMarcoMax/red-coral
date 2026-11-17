@@ -22,12 +22,18 @@ import { GamesService } from './games.service';
             <p>{{ g.excerpt }}</p>
           </div>
         </header>
-        <dl>
-          <dt>{{ 'games.detail.status' | transloco }}</dt>
-          <dd>{{ g.status }}</dd>
-          <dt>{{ 'games.detail.platforms' | transloco }}</dt>
-          <dd>{{ g.platforms }}</dd>
-        </dl>
+        @if (g.status || g.platforms) {
+          <dl>
+            @if (g.status) {
+              <dt>{{ 'games.detail.status' | transloco }}</dt>
+              <dd>{{ g.status }}</dd>
+            }
+            @if (g.platforms) {
+              <dt>{{ 'games.detail.platforms' | transloco }}</dt>
+              <dd>{{ g.platforms }}</dd>
+            }
+          </dl>
+        }
         <app-content-body [folder]="games.folder" [slug]="g.slug" [lang]="g.lang" />
         <h2>{{ 'games.detail.downloads' | transloco }}</h2>
         @if (g.downloads.length) {

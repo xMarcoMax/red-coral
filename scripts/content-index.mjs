@@ -9,8 +9,9 @@ import { pathToFileURL } from 'node:url';
 const LANGS = ['it', 'en'];
 const EXCERPT_LENGTH = 300;
 // campi obbligatori oltre a "title", per raccolta
-const REQUIRED = { posts: ['date'], games: ['icon', 'genre', 'status', 'platforms', 'date'] };
+const REQUIRED = { posts: ['date'], games: ['icon', 'genre', 'date'] };
 // campi di testo, diversi per lingua
+// (status e platforms sono facoltativi)
 const TEXTS = ['title', 'genre', 'status', 'platforms'];
 
 // shortcut: front matter = righe "chiave: valore" tra due "---", niente YAML completo; solo "download" si può ripetere; si cambia se servono altre liste o testi su più righe
