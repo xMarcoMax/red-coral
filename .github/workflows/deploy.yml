@@ -24,7 +24,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx ng build --base-href /red-coral/
+      - run: npm run test:blog
+      - run: npm run build -- --base-href /red-coral/
       # Pages non conosce le route Angular: 404.html = index.html fa funzionare refresh e deep link
       - run: cp dist/red-coral/browser/index.html dist/red-coral/browser/404.html
       - uses: actions/upload-pages-artifact@v3

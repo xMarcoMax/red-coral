@@ -9,6 +9,7 @@
     "label": "Principale",
     "home": "Home",
     "games": "Giochi",
+    "blog": "Blog",
     "about": "Chi siamo"
   },
   "games": {
@@ -38,5 +39,11 @@
   },
   "about": {
     "wip": "Lavori in corso"
+  },
+  "blog": {
+    "title": "Blog",
+    "back": "Torna al blog",
+    "notFound": "Articolo non trovato",
+    "empty": "Nessun articolo per ora."
   }
 }

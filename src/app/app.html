@@ -7,6 +7,7 @@
     <nav [attr.aria-label]="'nav.label' | transloco">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ 'nav.home' | transloco }}</a>
       <a routerLink="/giochi" routerLinkActive="active">{{ 'nav.games' | transloco }}</a>
+      <a routerLink="/blog" routerLinkActive="active">{{ 'nav.blog' | transloco }}</a>
       <a routerLink="/chi-siamo" routerLinkActive="active">{{ 'nav.about' | transloco }}</a>
     </nav>
     <app-language-switcher />

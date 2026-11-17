@@ -37,13 +37,15 @@ Vincoli di GitHub Pages:
 | `/giochi` | Elenco dei giochi: un link per gioco | fatta (elenco semplice) |
 | `/giochi/:slug` | Scheda gioco: descrizione, screenshot, stato, download con tutte le versioni. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile | modello segnaposto (`game-template`) |
 | `/chi-siamo` | Chi c'è dietro Red Coral, contatti, link social | solo "Work in progress" |
-| `/blog`, `/blog/:slug` | Elenco post e singolo post | da fare |
+| `/blog`, `/blog/:slug` | Elenco post (titolo + inizio del testo troncato) e singolo post | fatta, con post modello `post-template` |
+
+**Blog**: ogni post è una cartella `public/blog/<slug>/` con `it.md` e/o `en.md` (Markdown con intestazione `title` e `date`) e le sue immagini. L'indice `public/blog/index.json` è generato da `scripts/blog-index.mjs` (parte con `npm start` e `npm run build`, ignorato da git; se si usa `ng serve` direttamente va lanciato prima `npm run blog`). Le immagini su una riga da sola diventano figure con didascalia, con posizione `"right"`, `"left"` o a tutta larghezza. Libreria: `marked`. **Guida completa per aggiungere post: `docs/BLOG.md`** (da leggere prima di toccare il blog).
 
 **Layout dell'elenco `/giochi` (deciso)**: una riga rettangolare per gioco, tutta cliccabile (bordo corallo al passaggio del mouse). A sinistra l'icona del gioco (quadrata, bordi arrotondati, circa 96 px). A destra due testi uno sopra l'altro: sopra il titolo; sotto una brevissima descrizione, poi un trattino e il genere. La descrizione si tronca con "…" su una riga, il genere non si tronca. Su telefono la riga resta uguale con l'icona più piccola.
 
 **Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`; lo screenshot segnaposto (16:9, con il simbolo) è `public/games/game-template/screenshot-1.svg`, inserito nel testo, a destra con il testo che scorre attorno (larghezza massima circa 24 rem, a tutta larghezza su telefono) e una didascalia, per mostrare come appaiono le immagini di gioco (`screenshots` in `games.data.ts`). Il nome del file nel link non si traduce.
 
-Navigazione nell'header: Home, Giochi, Chi siamo (blog quando esiste). Ogni altra route torna alla home. I giochi sono in `src/app/games/games.data.ts` (solo lo slug); i testi di ogni gioco in `public/i18n/*.json` sotto `games.items.<slug>`. Per aggiungere un gioco: slug, icona e download nell'elenco + testi in entrambe le lingue.
+Navigazione nell'header: Home, Giochi, Blog, Chi siamo. Ogni altra route torna alla home. I giochi sono in `src/app/games/games.data.ts` (solo lo slug); i testi di ogni gioco in `public/i18n/*.json` sotto `games.items.<slug>`. Per aggiungere un gioco: slug, icona e download nell'elenco + testi in entrambe le lingue.
 
 ## 4. Modello dei contenuti
 
@@ -93,11 +95,10 @@ Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubbli
 
 ## 7. Prossimi passi (in ordine)
 
-1. Scrivere i modelli e un servizio che legge i contenuti (giochi, post).
-2. Layout definitivo dell'elenco giochi (riga con icona a sinistra, titolo e descrizione con genere a destra) e contenuti veri del modello.
-3. Home, blog, chi sono.
-4. Collegare i download alle GitHub Releases.
-5. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.
+1. Semplificare i giochi: oggi dati e testi stanno in tre punti (`games.data.ts` e i due JSON); idea: un file per gioco, come per i post.
+2. Home e Chi siamo (contenuti veri).
+3. Collegare i download alle GitHub Releases.
+4. Rifinire: SEO di base (title, meta, Open Graph), RSS per il blog, logo SVG nell'header.
 
 ## 8. Punti aperti
 
