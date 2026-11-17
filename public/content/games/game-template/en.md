@@ -1,6 +1,7 @@
 ---
 title: Game Name
 icon: icon.png
+date: 2026-11-17
 genre: Adventure
 status: Alpha
 platforms: Windows

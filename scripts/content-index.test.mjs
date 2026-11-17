@@ -35,7 +35,7 @@ test('taglia gli estratti lunghi a fine parola, con i puntini', () => {
 });
 
 const game = (title, extra = '') =>
-  `---\ntitle: ${title}\nicon: icon.png\ngenre: G\nstatus: S\nplatforms: P\ndescription: Breve ${title}\n${extra}---\nTesto\n`;
+  `---\ntitle: ${title}\nicon: icon.png\ndate: 2026-01-01\ngenre: G\nstatus: S\nplatforms: P\ndescription: Breve ${title}\n${extra}---\nTesto\n`;
 
 test('gioco: campi, descrizione al posto dell\'estratto, download ripetuti', () => {
   const dl = 'download: Windows | https://x.it/a.zip\ndownload: Test | downloads/t.txt\n';
@@ -45,7 +45,7 @@ test('gioco: campi, descrizione al posto dell\'estratto, download ripetuti', () 
     { label: 'Windows', file: 'https://x.it/a.zip' },
     { label: 'Test', file: 'downloads/t.txt' },
   ]);
-  assert.equal(g.date, undefined);
+  assert.equal(g.date, "2026-01-01");
   assert.deepEqual(g.it, { excerpt: 'Breve Titolo', title: 'Titolo', genre: 'G', status: 'S', platforms: 'P' });
 });
 

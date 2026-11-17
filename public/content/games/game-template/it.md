@@ -1,6 +1,7 @@
 ---
 title: Nome Gioco
 icon: icon.png
+date: 2026-11-17
 genre: Avventura
 status: Alfa
 platforms: Windows

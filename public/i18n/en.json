@@ -1,6 +1,11 @@
 {
   "home": {
-    "soon": "Site under construction."
+    "tagline": "Indie games from Alghero",
+    "latestGames": "Latest games",
+    "latestPosts": "Latest posts",
+    "prev": "Previous",
+    "next": "Next",
+    "goTo": "Go to card"
   },
   "lang": {
     "label": "Language"

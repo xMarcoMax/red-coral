@@ -1,6 +1,11 @@
 {
   "home": {
-    "soon": "Sito in costruzione."
+    "tagline": "Videogiochi indie da Alghero",
+    "latestGames": "Ultimi giochi",
+    "latestPosts": "Ultimi post",
+    "prev": "Precedente",
+    "next": "Successivo",
+    "goTo": "Vai alla scheda"
   },
   "lang": {
     "label": "Lingua"

@@ -9,7 +9,7 @@ import { pathToFileURL } from 'node:url';
 const LANGS = ['it', 'en'];
 const EXCERPT_LENGTH = 300;
 // campi obbligatori oltre a "title", per raccolta
-const REQUIRED = { posts: ['date'], games: ['icon', 'genre', 'status', 'platforms'] };
+const REQUIRED = { posts: ['date'], games: ['icon', 'genre', 'status', 'platforms', 'date'] };
 // campi di testo, diversi per lingua
 const TEXTS = ['title', 'genre', 'status', 'platforms'];
 

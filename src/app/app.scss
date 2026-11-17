@@ -35,18 +35,16 @@ footer {
 
 .brand {
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* simbolo e scritta poggiano sulla stessa base */
   gap: var(--space-2);
-  font-family: var(--font-brand);
-  font-size: 1.5rem;
-  color: var(--color-text);
-  text-decoration: none;
-  &:hover {
-    color: var(--color-coral);
-  }
 }
-.brand img {
+.brand .symbol {
   height: 2.5rem;
+  width: auto;
+}
+/* scritta del logo (SVG): il nome Red Coral, con le lettere alternate rosso e giallo */
+.brand .wordmark {
+  height: 1.75rem;
   width: auto;
 }
 

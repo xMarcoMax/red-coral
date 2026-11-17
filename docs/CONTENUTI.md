@@ -44,6 +44,7 @@ Un gioco:
 ---
 title: Nome del gioco
 icon: icon.png
+date: 2026-11-17
 genre: Avventura
 status: Alfa
 platforms: Windows
@@ -57,7 +58,7 @@ Testo della pagina del gioco...
 | Campo | Per chi | Significato |
 |---|---|---|
 | `title` | tutti, obbligatorio | titolo |
-| `date` | post obbligatoria, giochi facoltativa | formato `AAAA-MM-GG`. Decide l'ordine dell'elenco (dal più recente) |
+| `date` | tutti, obbligatoria | formato `AAAA-MM-GG`. Decide l'ordine degli elenchi (dal più recente) e quali 3 contenuti compaiono nella home. **Aggiornala ogni volta che modifichi la pagina.** Nei post compare sotto il titolo; per i giochi è un dato interno e non si vede |
 | `description` | facoltativo | testo dell'anteprima nell'elenco. Se manca, si usano le prime righe del testo |
 | `icon` | giochi obbligatorio, post facoltativo | file dell'icona nella cartella (quadrata, PNG o SVG) |
 | `genre`, `status`, `platforms` | giochi, obbligatori | genere, stato (alfa, beta, in sviluppo, rilasciato) e piattaforme, scritti come devono comparire |
@@ -100,7 +101,7 @@ Su telefono le immagini a destra e a sinistra diventano a tutta larghezza. Il no
 ## Per Claude: checklist quando l'autore dà un testo
 
 1. Crea la cartella da copia del modello giusto (`post-template` o `game-template`), con un nome in minuscolo e trattini.
-2. Scrivi `it.md` con il testo dell'autore (senza cambiarlo, solo formattazione Markdown) e `en.md` con la traduzione. Stessi `date`, `icon` e `download`, stesse immagini.
+2. Scrivi `it.md` con il testo dell'autore (senza cambiarlo, solo formattazione Markdown) e `en.md` con la traduzione. Stessi `date`, `icon` e `download`, stesse immagini. Se l'autore modifica una pagina esistente, aggiorna `date` in tutti e due i file.
 3. Copia le immagini indicate dall'autore nella cartella e scrivi una didascalia sensata, nella lingua di ogni file.
 4. Esegui `npm run content`: deve stampare il numero di elementi per raccolta senza errori. Poi `npm run test:scripts` e `npx ng test --watch=false` se hai toccato il codice.
 5. **Non fare commit né push** senza una richiesta esplicita dell'autore.
@@ -116,3 +117,4 @@ Su telefono le immagini a destra e a sinistra diventano a tutta larghezza. Il no
 | `src/app/content/markdown.ts` | da Markdown a HTML, con figura e didascalia |
 | `src/app/blog/` | pagine `/blog` (elenco) e `/blog/<nome>` (titolo e data) |
 | `src/app/games/` | pagine `/games` (elenco) e `/games/<nome>` (icona, dati, download) |
+| `src/app/home/showreel.ts` | i due showreel della home: gli ultimi 3 giochi e gli ultimi 3 post, dal `date` più recente |

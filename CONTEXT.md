@@ -33,7 +33,7 @@ Vincoli di GitHub Pages:
 
 | Route | Contenuto | Stato |
 |---|---|---|
-| `/` | Home: presentazione, gioco in evidenza, ultimi post | segnaposto |
+| `/` | Home: nome, una frase e due showreel animati uno sopra l'altro (vedi sotto) | fatta |
 | `/games` | Elenco dei giochi: un link per gioco | fatta |
 | `/games/:slug` | Scheda gioco: icona, dati, testo con screenshot, download. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile | modello segnaposto (`game-template`) |
 | `/about-us` | Chi c'è dietro Red Coral, contatti, link social | solo "Work in progress" |
@@ -46,6 +46,8 @@ Gli indirizzi delle pagine sono in inglese, come il codice, anche se il sito è 
 **Layout dell'elenco `/games` (deciso)**: una riga rettangolare per gioco, tutta cliccabile (bordo corallo al passaggio del mouse). A sinistra l'icona del gioco (quadrata, bordi arrotondati, circa 96 px). A destra due testi uno sopra l'altro: sopra il titolo; sotto una brevissima descrizione, poi un trattino e il genere. La descrizione si tronca con "…" su una riga, il genere non si tronca. Su telefono la riga resta uguale con l'icona più piccola.
 
 **Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`; lo screenshot segnaposto (16:9, con il simbolo) è `public/content/games/game-template/screenshot-1.svg`, inserito nel testo con la sintassi delle immagini, a destra con il testo che scorre attorno (larghezza massima circa 24 rem, a tutta larghezza su telefono) e una didascalia, per mostrare come appaiono le immagini di gioco. Il nome del file nel link non si traduce.
+
+**Home**: titolo "Red Coral" e una frase, poi due showreel (`src/app/home/showreel.ts`): "Ultimi giochi" e "Ultimi post", uno sopra l'altro. Ognuno mostra gli ultimi 3 contenuti per `date` (più recente prima), uno alla volta per circa 5,5 secondi, con dissolvenza verso sinistra; frecce e puntini scorrono a mano, e l'animazione si ferma con mouse, tocco o focus (e non parte con "riduci animazioni"). Se i contenuti sono meno di 3, i posti mancanti sono schede vuote con `public/placeholder.svg`. Nei giochi `date` è un dato interno (ultimo aggiornamento, non si vede), da aggiornare a ogni modifica della pagina.
 
 Navigazione nell'header: Home, Giochi, Blog, Chi siamo. Ogni altra route torna alla home.
 
@@ -70,7 +72,7 @@ Ispirata al corallo rosso e al mare di Alghero.
   - bianco sporco per il testo
   - tinta mare secondaria per i dettagli
 - **Tipografia**: da scegliere (un titolo con carattere + un testo molto leggibile).
-- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png` nella radice del progetto, fuori da `public/`, non ancora usata nel sito. Versioni vettoriali (SVG a colori piatti, un livello per colore, ottenute dai PNG con potrace): `red-coral.svg` (simbolo), `red-coral-text.svg` (scritta), `red-coral-vertical-logo.svg` (insieme). Non ancora usate nel sito, che usa il PNG `public/logo.png`: sono pronte per sostituirlo e per generare le icone. Sorgenti raster nella radice (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
+- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png` nella radice del progetto, fuori da `public/`, non ancora usata nel sito. Versioni vettoriali (SVG a colori piatti, un livello per colore, ottenute dai PNG con potrace): `red-coral.svg` (simbolo), `red-coral-text.svg` (scritta), `red-coral-vertical-logo.svg` (insieme). Versione orizzontale (simbolo a sinistra, scritta a destra, stessa base e stesse proporzioni dell'header del sito: scritta al 70% dell'altezza del simbolo): `red-coral-horizontal-logo.svg` e `.png` (2855×620, trasparente), ottenuta componendo `red-coral.svg` e `red-coral-text.svg`. Nell'header il simbolo è il PNG `public/logo.png` e la scritta è `public/red-coral-text.svg` (copia di `red-coral-text.svg` della radice, con testo alternativo "Red Coral"); `red-coral.svg` (simbolo) è pronto per sostituire il PNG e per generare le icone. Sorgenti raster nella radice (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 
@@ -97,9 +99,9 @@ Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubbli
 
 ## 7. Prossimi passi (in ordine)
 
-1. Home e Chi siamo (contenuti veri).
+1. Chi siamo (contenuti veri) e testi definitivi della home.
 2. Collegare i download alle GitHub Releases.
-3. Rifinire: SEO di base (title, meta, Open Graph), RSS per il blog, logo SVG nell'header.
+3. Rifinire: SEO di base (title, meta, Open Graph), RSS per il blog, simbolo SVG nell'header.
 
 ## 8. Punti aperti
 
