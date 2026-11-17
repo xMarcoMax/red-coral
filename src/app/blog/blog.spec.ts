@@ -27,7 +27,7 @@ describe('Blog', () => {
   it("elenca i post con titolo e inizio del testo, e usa l'altra lingua se manca", () => {
     const f = TestBed.createComponent(Blog);
     f.detectChanges();
-    TestBed.inject(HttpTestingController).expectOne('blog/index.json').flush(index);
+    TestBed.inject(HttpTestingController).expectOne('content/posts/index.json').flush(index);
     f.detectChanges();
 
     const rows: HTMLElement[] = [...f.nativeElement.querySelectorAll('a.row')];
@@ -43,7 +43,7 @@ describe('Blog', () => {
   it("mostra un messaggio quando non c'è nessun post", () => {
     const f = TestBed.createComponent(Blog);
     f.detectChanges();
-    TestBed.inject(HttpTestingController).expectOne('blog/index.json').flush([]);
+    TestBed.inject(HttpTestingController).expectOne('content/posts/index.json').flush([]);
     f.detectChanges();
     expect(f.nativeElement.textContent).toContain('Vuoto');
   });

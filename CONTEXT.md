@@ -34,18 +34,20 @@ Vincoli di GitHub Pages:
 | Route | Contenuto | Stato |
 |---|---|---|
 | `/` | Home: presentazione, gioco in evidenza, ultimi post | segnaposto |
-| `/giochi` | Elenco dei giochi: un link per gioco | fatta (elenco semplice) |
-| `/giochi/:slug` | Scheda gioco: descrizione, screenshot, stato, download con tutte le versioni. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile | modello segnaposto (`game-template`) |
-| `/chi-siamo` | Chi c'è dietro Red Coral, contatti, link social | solo "Work in progress" |
+| `/games` | Elenco dei giochi: un link per gioco | fatta |
+| `/games/:slug` | Scheda gioco: icona, dati, testo con screenshot, download. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile | modello segnaposto (`game-template`) |
+| `/about-us` | Chi c'è dietro Red Coral, contatti, link social | solo "Work in progress" |
 | `/blog`, `/blog/:slug` | Elenco post (titolo + inizio del testo troncato) e singolo post | fatta, con post modello `post-template` |
 
-**Blog**: ogni post è una cartella `public/blog/<slug>/` con `it.md` e/o `en.md` (Markdown con intestazione `title` e `date`) e le sue immagini. L'indice `public/blog/index.json` è generato da `scripts/blog-index.mjs` (parte con `npm start` e `npm run build`, ignorato da git; se si usa `ng serve` direttamente va lanciato prima `npm run blog`). Le immagini su una riga da sola diventano figure con didascalia, con posizione `"right"`, `"left"` o a tutta larghezza. Libreria: `marked`. **Guida completa per aggiungere post: `docs/BLOG.md`** (da leggere prima di toccare il blog).
+Gli indirizzi delle pagine sono in inglese, come il codice, anche se il sito è bilingue.
 
-**Layout dell'elenco `/giochi` (deciso)**: una riga rettangolare per gioco, tutta cliccabile (bordo corallo al passaggio del mouse). A sinistra l'icona del gioco (quadrata, bordi arrotondati, circa 96 px). A destra due testi uno sopra l'altro: sopra il titolo; sotto una brevissima descrizione, poi un trattino e il genere. La descrizione si tronca con "…" su una riga, il genere non si tronca. Su telefono la riga resta uguale con l'icona più piccola.
+**Contenuti (post e giochi)**: blog e giochi funzionano allo stesso modo. Ogni contenuto è una cartella `public/content/posts/<slug>/` o `public/content/games/<slug>/` con `it.md` e/o `en.md` (Markdown con intestazione `title`, e per i post `date`, per i giochi `icon`, `genre`, `status`, `platforms`, `description` e uno o più `download: Etichetta | indirizzo`) più le sue immagini. Le cartelle stanno sotto `content` perché su Pages una cartella con lo stesso nome di una route (`/blog/`, `/games/`) aprirebbe la cartella e non la pagina. Gli indici `public/content/<raccolta>/index.json` sono generati da `scripts/content-index.mjs` (parte con `npm start` e `npm run build`, ignorati da git; con `ng serve` diretto va lanciato prima `npm run content`). Codice comune: `src/app/content/` (`ContentCollection` carica l'indice e sceglie la lingua; `ContentBody` mostra il testo; `markdown.ts` lo converte con `marked`). Le immagini su una riga da sola diventano figure con didascalia, con posizione `"right"`, `"left"` o a tutta larghezza. **Guida completa: `docs/CONTENUTI.md`** (da leggere prima di toccare blog o giochi).
 
-**Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`; lo screenshot segnaposto (16:9, con il simbolo) è `public/games/game-template/screenshot-1.svg`, inserito nel testo, a destra con il testo che scorre attorno (larghezza massima circa 24 rem, a tutta larghezza su telefono) e una didascalia, per mostrare come appaiono le immagini di gioco (`screenshots` in `games.data.ts`). Il nome del file nel link non si traduce.
+**Layout dell'elenco `/games` (deciso)**: una riga rettangolare per gioco, tutta cliccabile (bordo corallo al passaggio del mouse). A sinistra l'icona del gioco (quadrata, bordi arrotondati, circa 96 px). A destra due testi uno sopra l'altro: sopra il titolo; sotto una brevissima descrizione, poi un trattino e il genere. La descrizione si tronca con "…" su una riga, il genere non si tronca. Su telefono la riga resta uguale con l'icona più piccola.
 
-Navigazione nell'header: Home, Giochi, Blog, Chi siamo. Ogni altra route torna alla home. I giochi sono in `src/app/games/games.data.ts` (solo lo slug); i testi di ogni gioco in `public/i18n/*.json` sotto `games.items.<slug>`. Per aggiungere un gioco: slug, icona e download nell'elenco + testi in entrambe le lingue.
+**Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`; lo screenshot segnaposto (16:9, con il simbolo) è `public/content/games/game-template/screenshot-1.svg`, inserito nel testo con la sintassi delle immagini, a destra con il testo che scorre attorno (larghezza massima circa 24 rem, a tutta larghezza su telefono) e una didascalia, per mostrare come appaiono le immagini di gioco. Il nome del file nel link non si traduce.
+
+Navigazione nell'header: Home, Giochi, Blog, Chi siamo. Ogni altra route torna alla home.
 
 ## 4. Modello dei contenuti
 
@@ -55,7 +57,7 @@ Tutto statico, tenuto nel repo come file (nessun CMS).
 - **Versione**: numero, data, canale (alfa/beta/stabile), note di rilascio, link di download (Release GitHub) per piattaforma.
 - **Post**: slug, titolo, data, riassunto, corpo, gioco collegato (opzionale).
 
-Dati dei giochi e delle versioni (con i link di download alle GitHub Releases) in **JSON scritto a mano**: a ogni release si aggiunge una riga. Post: file **Markdown** con front matter, resi con una libreria dentro un contenitore stilizzato dal CSS del sito (stessi font e colori; può prendere il tema del gioco collegato). Per layout complessi (galleria, riquadro download) si useranno blocchi speciali che il sito mostra come componenti Angular. Un post con layout unico può essere una pagina Angular a parte.
+Giochi e post: file **Markdown** con front matter (vedi sopra), resi con una libreria dentro un contenitore stilizzato dal CSS del sito (stessi font e colori; il gioco può avere un proprio tema). I download di ogni gioco sono righe `download:` nell'intestazione, con i link alle GitHub Releases: a ogni release si aggiunge una riga. Per layout complessi (galleria, riquadro download) si useranno blocchi speciali che il sito mostra come componenti Angular. Un post con layout unico può essere una pagina Angular a parte.
 
 ## 5. Direzione visiva
 
@@ -72,7 +74,7 @@ Ispirata al corallo rosso e al mare di Alghero.
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 
-I colori, i font e le spaziature sono variabili CSS in `src/styles.scss` (`--color-*`, `--space-*`, `--font-*`), usate ovunque. Font del marchio (nome Red Coral): **Caprasimo** (licenza OFL), installato come pacchetto npm `@fontsource/caprasimo` e servito dal sito, variabile `--font-brand`. Usarlo solo per il nome della software house, anche sotto il logo. Per titoli e testi per ora lo stack di sistema (nessun font di Google caricato da remoto, per la privacy); font per titoli e testi ancora da scegliere.
+I colori, i font e le spaziature sono variabili CSS in `src/styles.scss` (`--color-*`, `--space-*`, `--font-*`), usate ovunque. Font del marchio (nome Red Coral): **Caprasimo** (licenza OFL), installato come pacchetto npm `@fontsource/caprasimo` e servito dal sito, variabile `--font-brand`. Usarlo per il nome della software house (anche sotto il logo) e per il titolo (`h1`) della pagina di un gioco e di un post del blog. Per titoli e testi per ora lo stack di sistema (nessun font di Google caricato da remoto, per la privacy); font per titoli e testi ancora da scegliere.
 
 ## 6. Stato attuale
 
@@ -95,10 +97,9 @@ Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubbli
 
 ## 7. Prossimi passi (in ordine)
 
-1. Semplificare i giochi: oggi dati e testi stanno in tre punti (`games.data.ts` e i due JSON); idea: un file per gioco, come per i post.
-2. Home e Chi siamo (contenuti veri).
-3. Collegare i download alle GitHub Releases.
-4. Rifinire: SEO di base (title, meta, Open Graph), RSS per il blog, logo SVG nell'header.
+1. Home e Chi siamo (contenuti veri).
+2. Collegare i download alle GitHub Releases.
+3. Rifinire: SEO di base (title, meta, Open Graph), RSS per il blog, logo SVG nell'header.
 
 ## 8. Punti aperti
 
@@ -110,7 +111,7 @@ Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubbli
 ## 9. Convenzioni di lavoro
 
 - Componenti standalone, con `signal` per lo stato locale. Un componente per cartella.
-- Nomi di file e route in italiano o inglese in modo coerente (route in italiano come in §3, codice in inglese).
+- Nomi di file, route e codice in inglese.
 - Stili SCSS per componente; i valori comuni vengono sempre da variabili CSS globali.
 - Comandi: `npm start` (sviluppo), `npm run build`, `npm test`.
 - Questo file va aggiornato **nello stesso momento** in cui cambia qualcosa che descrive.

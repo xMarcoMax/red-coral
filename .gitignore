@@ -46,5 +46,6 @@ Thumbs.db
 # graphify (rigenerato dall hook post-commit)
 /graphify-out/
 
-# indice del blog generato da scripts/blog-index.mjs
-/public/blog/index.json
+# indici dei contenuti generati da scripts/content-index.mjs
+/public/content/posts/index.json
+/public/content/games/index.json

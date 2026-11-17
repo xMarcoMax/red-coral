@@ -12,13 +12,13 @@ const escape = (s: string) =>
  * Markdown -> HTML. Le immagini scritte da sole su una riga diventano una figura con didascalia:
  * `![didascalia](file.png "right")`. Il titolo tra virgolette sceglie la posizione:
  * "right" e "left" fanno scorrere il testo attorno, altrimenti l'immagine sta a tutta larghezza.
- * I percorsi relativi partono da public/blog/<slug>/.
+ * I percorsi relativi partono da public/<raccolta>/<slug>/ (baseDir = "<raccolta>/<slug>").
  */
-export function renderPost(markdown: string, slug: string): string {
+export function renderMarkdown(markdown: string, baseDir: string): string {
   const marked = new Marked({
     renderer: {
       image({ href, title, text }: Tokens.Image) {
-        const src = /^(https?:|data:|\/)/.test(href) ? href : `blog/${slug}/${href}`;
+        const src = /^(https?:|data:|\/)/.test(href) ? href : `${baseDir}/${href}`;
         const side = title === 'right' || title === 'left' ? title : 'full';
         const caption = text ? `<figcaption>${escape(text)}</figcaption>` : '';
         return `<figure class="${side}"><img src="${escape(src)}" alt="${escape(text)}" loading="lazy" />${caption}</figure>`;

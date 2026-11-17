@@ -20,21 +20,7 @@
       "status": "Stato",
       "platforms": "Piattaforme",
       "downloads": "Download",
-      "noDownloads": "Nessun download disponibile per ora.",
-      "screenshotAlt": "Screenshot del gioco",
-      "screenshotCaption": "Un momento di gioco (immagine di esempio)"
-    },
-    "items": {
-      "game-template": {
-        "title": "Nome Gioco",
-        "genre": "Avventura",
-        "description": "Un gioco divertente che ti appassionerà",
-        "status": "Alfa",
-        "platforms": "Windows",
-        "about": "Questa pagina è un modello: ogni futura pagina di gioco parte da qui. Sostituisci nome, testi, immagine e download con quelli veri.",
-        "p2": "Esplora un mondo pieno di sorprese, affronta sfide sempre nuove e scopri i segreti nascosti in ogni angolo. Ogni partita è diversa e ogni scelta cambia il modo in cui si sviluppa la storia.",
-        "p3": "Gioca da solo o con gli amici, sblocca nuove abilità e personalizza il tuo personaggio. Sessioni brevi o lunghe serate: il gioco si adatta al tuo ritmo."
-      }
+      "noDownloads": "Nessun download disponibile per ora."
     }
   },
   "about": {

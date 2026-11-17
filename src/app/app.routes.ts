@@ -8,10 +8,10 @@ import { Home } from './home/home';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'giochi', component: Games },
-  { path: 'giochi/:slug', component: GameDetail },
+  { path: 'games', component: Games },
+  { path: 'games/:slug', component: GameDetail },
   { path: 'blog', component: Blog },
   { path: 'blog/:slug', component: BlogPost },
-  { path: 'chi-siamo', component: About },
+  { path: 'about-us', component: About },
   { path: '**', redirectTo: '' },
 ];

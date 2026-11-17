@@ -20,21 +20,7 @@
       "status": "Status",
       "platforms": "Platforms",
       "downloads": "Downloads",
-      "noDownloads": "No downloads available yet.",
-      "screenshotAlt": "Game screenshot",
-      "screenshotCaption": "A moment from the game (sample image)"
-    },
-    "items": {
-      "game-template": {
-        "title": "Game Name",
-        "genre": "Adventure",
-        "description": "A fun game that will hook you",
-        "status": "Alpha",
-        "platforms": "Windows",
-        "about": "This page is a template: every future game page starts from here. Replace the name, the texts, the image and the downloads with the real ones.",
-        "p2": "Explore a world full of surprises, face new challenges at every step and uncover the secrets hidden in every corner. Every run is different, and every choice changes how the story unfolds.",
-        "p3": "Play alone or with friends, unlock new abilities and customise your character. Short sessions or long evenings: the game adapts to your pace."
-      }
+      "noDownloads": "No downloads available yet."
     }
   },
   "about": {

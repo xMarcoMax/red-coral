@@ -9,11 +9,11 @@ import { BlogService } from './blog.service';
   template: `
     <main class="container">
       <h1>{{ 'blog.title' | transloco }}</h1>
-      @if (blog.loaded() && !blog.posts().length) {
+      @if (blog.loaded() && !blog.items().length) {
         <p>{{ 'blog.empty' | transloco }}</p>
       }
       <ul>
-        @for (post of blog.posts(); track post.slug) {
+        @for (post of blog.items(); track post.slug) {
           <li>
             <a class="row" [routerLink]="['/blog', post.slug]">
               <h2>{{ post.title }}</h2>

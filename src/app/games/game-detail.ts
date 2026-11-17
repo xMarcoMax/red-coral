@@ -1,41 +1,34 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { GAMES } from './games.data';
+import { ContentBody } from '../content/content-body';
+import { GamesService } from './games.service';
 
 // Modello di base delle pagine dei giochi: ogni gioco futuro parte da qui
 // e potrà avere il proprio stile.
 @Component({
   selector: 'app-game-detail',
-  imports: [RouterLink, TranslocoPipe],
+  imports: [RouterLink, TranslocoPipe, ContentBody],
   template: `
     <main class="container">
       @if (game(); as g) {
         <header>
-          <img [src]="g.icon" alt="" width="160" height="160" />
+          @if (g.icon) {
+            <img [src]="g.icon" alt="" width="160" height="160" />
+          }
           <div>
-            <h1>{{ 'games.items.' + g.slug + '.title' | transloco }}</h1>
-            <p class="genre">{{ 'games.items.' + g.slug + '.genre' | transloco }}</p>
-            <p>{{ 'games.items.' + g.slug + '.description' | transloco }}</p>
+            <h1>{{ g.title }}</h1>
+            <p class="genre">{{ g.genre }}</p>
+            <p>{{ g.excerpt }}</p>
           </div>
         </header>
         <dl>
           <dt>{{ 'games.detail.status' | transloco }}</dt>
-          <dd>{{ 'games.items.' + g.slug + '.status' | transloco }}</dd>
+          <dd>{{ g.status }}</dd>
           <dt>{{ 'games.detail.platforms' | transloco }}</dt>
-          <dd>{{ 'games.items.' + g.slug + '.platforms' | transloco }}</dd>
+          <dd>{{ g.platforms }}</dd>
         </dl>
-        <div class="text">
-          <p>{{ 'games.items.' + g.slug + '.about' | transloco }}</p>
-          @for (s of g.screenshots; track s) {
-            <figure>
-              <img [src]="s" [alt]="'games.detail.screenshotAlt' | transloco" width="1280" height="720" />
-              <figcaption>{{ 'games.detail.screenshotCaption' | transloco }}</figcaption>
-            </figure>
-          }
-          <p>{{ 'games.items.' + g.slug + '.p2' | transloco }}</p>
-          <p>{{ 'games.items.' + g.slug + '.p3' | transloco }}</p>
-        </div>
+        <app-content-body [folder]="games.folder" [slug]="g.slug" [lang]="g.lang" />
         <h2>{{ 'games.detail.downloads' | transloco }}</h2>
         @if (g.downloads.length) {
           <ul>
@@ -48,11 +41,11 @@ import { GAMES } from './games.data';
         } @else {
           <p>{{ 'games.detail.noDownloads' | transloco }}</p>
         }
-      } @else {
+      } @else if (games.loaded()) {
         <h1>{{ 'games.notFound' | transloco }}</h1>
       }
       <p>
-        <a routerLink="/giochi">{{ 'games.back' | transloco }}</a>
+        <a routerLink="/games">{{ 'games.back' | transloco }}</a>
       </p>
     </main>
   `,
@@ -75,40 +68,11 @@ import { GAMES } from './games.data';
     }
     h1 {
       margin: 0;
+      font-family: var(--font-brand);
+      font-weight: 400; /* Caprasimo ha un solo peso: senza questo il grassetto è finto */
     }
     .genre {
       margin: 0;
-      color: var(--color-muted);
-    }
-    /* flow-root: il testo scorre attorno all'immagine e il titolo Download parte sotto di essa */
-    .text {
-      display: flow-root;
-    }
-    /* immagine nel testo, a destra, come in un articolo; a tutta larghezza su schermi stretti */
-    figure {
-      float: right;
-      width: min(45%, 24rem);
-      margin: var(--space-1) 0 var(--space-3) var(--space-4);
-    }
-    @media (max-width: 40rem) {
-      figure {
-        float: none;
-        width: 100%;
-        margin-inline: 0;
-      }
-    }
-    figure img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      padding: 0;
-      background: none;
-      border-radius: var(--radius);
-    }
-    figcaption {
-      margin-top: var(--space-1);
-      font-size: 0.85rem;
       color: var(--color-muted);
     }
     dl {
@@ -126,5 +90,6 @@ import { GAMES } from './games.data';
 })
 export class GameDetail {
   readonly slug = input.required<string>();
-  protected readonly game = computed(() => GAMES.find((g) => g.slug === this.slug()));
+  protected readonly games = inject(GamesService);
+  protected readonly game = computed(() => this.games.items().find((g) => g.slug === this.slug()));
 }

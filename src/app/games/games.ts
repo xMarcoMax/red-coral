@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { GAMES } from './games.data';
+import { GamesService } from './games.service';
 
 @Component({
   selector: 'app-games',
@@ -10,15 +10,17 @@ import { GAMES } from './games.data';
     <main class="container">
       <h1>{{ 'games.title' | transloco }}</h1>
       <ul>
-        @for (game of games; track game.slug) {
+        @for (game of games(); track game.slug) {
           <li>
-            <a class="row" [routerLink]="['/giochi', game.slug]">
-              <img [src]="game.icon" alt="" width="96" height="96" />
+            <a class="row" [routerLink]="['/games', game.slug]">
+              @if (game.icon) {
+                <img [src]="game.icon" alt="" width="96" height="96" />
+              }
               <div class="text">
-                <h2>{{ 'games.items.' + game.slug + '.title' | transloco }}</h2>
+                <h2>{{ game.title }}</h2>
                 <p>
-                  <span class="description">{{ 'games.items.' + game.slug + '.description' | transloco }}</span>
-                  <span class="genre">&nbsp;– {{ 'games.items.' + game.slug + '.genre' | transloco }}</span>
+                  <span class="description">{{ game.excerpt }}</span>
+                  <span class="genre">&nbsp;– {{ game.genre }}</span>
                 </p>
               </div>
             </a>
@@ -84,5 +86,5 @@ import { GAMES } from './games.data';
   `,
 })
 export class Games {
-  protected readonly games = GAMES;
+  protected readonly games = inject(GamesService).items;
 }
