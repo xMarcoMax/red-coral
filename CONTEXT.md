@@ -22,10 +22,11 @@ Lingua del sito: italiano (da decidere se aggiungere l'inglese, vedi punti apert
 - **Repo**: https://github.com/xMarcoMax/red-coral (pubblico, branch `main`). URL del sito previsto: `https://xmarcomax.github.io/red-coral/`.
 - Build di produzione: `ng build` → `dist/red-coral/`.
 
-Vincoli di GitHub Pages da gestire (da fare, vedi §7):
-- **base href**: se il repo non è `<utente>.github.io`, il sito vive sotto `/<repo>/` e serve `--base-href`.
-- **Deep link / refresh**: Pages non conosce le route Angular. Serve `404.html` copia di `index.html` (oppure routing con hash).
-- **Deploy**: GitHub Actions che builda e pubblica su Pages.
+Deploy: `.github/workflows/deploy.yml` builda a ogni push su `main` con `--base-href /red-coral/`, copia `index.html` in `404.html` (fallback per le route Angular) e pubblica su Pages (sorgente: GitHub Actions).
+
+Vincoli di GitHub Pages:
+- **base href**: il sito vive sotto `/red-coral/`; con un dominio personale andrà tolto `--base-href` dal workflow.
+- **Deep link / refresh**: gestito dal `404.html` generato nel workflow.
 - **File grandi**: i download dei giochi non vanno nel repo. Usare **GitHub Releases** (limite 2 GB per file) e linkarli dal sito.
 
 ## 3. Struttura del sito (pagine)
@@ -70,20 +71,20 @@ I colori e i font vanno definiti una sola volta come variabili CSS in `src/style
 
 Fatto:
 - Progetto Angular creato in questa cartella (nome `red-coral`, SCSS, routing, standalone, no SSR).
+- Pages attivo con deploy automatico via Actions.
 - Repo git inizializzato e pubblicato su GitHub (`xMarcoMax/red-coral`, pubblico).
 - Boilerplate di default rimosso: `app.html` contiene solo `<router-outlet />`.
 - Build e test passano.
 
-Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, nessun deploy su Pages.
+Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubblicato mostra una pagina vuota.
 
 ## 7. Prossimi passi (in ordine)
 
 1. Impostare il design system minimo: variabili CSS, font, reset, layout (header, footer).
 2. Scrivere i modelli e un servizio che legge i contenuti (giochi, post).
 3. Costruire le pagine: home, giochi, scheda gioco, blog, chi sono.
-4. Workflow GitHub Actions per build e deploy su Pages, con `404.html` e base href.
-5. Collegare i download alle GitHub Releases.
-6. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.
+4. Collegare i download alle GitHub Releases.
+5. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.
 
 ## 8. Punti aperti
 
