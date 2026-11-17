@@ -48,14 +48,14 @@ Tutto statico, tenuto nel repo come file (nessun CMS).
 - **Versione**: numero, data, canale (alfa/beta/stabile), note di rilascio, link di download (Release GitHub) per piattaforma.
 - **Post**: slug, titolo, data, riassunto, corpo, gioco collegato (opzionale).
 
-Dati dei giochi e delle versioni (con i link di download alle GitHub Releases) in **JSON scritto a mano**: a ogni release si aggiunge una riga. Post: Markdown con front matter proposto, da confermare (punti aperti).
+Dati dei giochi e delle versioni (con i link di download alle GitHub Releases) in **JSON scritto a mano**: a ogni release si aggiunge una riga. Post: file **Markdown** con front matter, resi con una libreria dentro un contenitore stilizzato dal CSS del sito (stessi font e colori; può prendere il tema del gioco collegato). Per layout complessi (galleria, riquadro download) si useranno blocchi speciali che il sito mostra come componenti Angular. Un post con layout unico può essere una pagina Angular a parte.
 
 ## 5. Direzione visiva
 
 Ispirata al corallo rosso e al mare di Alghero.
 
 - **Tono**: indie, personale, curato. Scuro e sobrio, con il rosso corallo come unico accento forte.
-- **Palette iniziale (provvisoria)**:
+- **Palette iniziale (provvisoria, già in `src/styles.scss`)**:
   - corallo `#E8473F`
   - blu notte / mare profondo per gli sfondi
   - bianco sporco per il testo
@@ -65,7 +65,7 @@ Ispirata al corallo rosso e al mare di Alghero.
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 
-I colori e i font vanno definiti una sola volta come variabili CSS in `src/styles.scss` e riusati ovunque.
+I colori, i font e le spaziature sono variabili CSS in `src/styles.scss` (`--color-*`, `--space-*`, `--font-*`), usate ovunque. Font: per ora lo stack di sistema (nessun font esterno, per evitare problemi di privacy); da scegliere se aggiungerne uno.
 
 ## 6. Stato attuale
 
@@ -78,21 +78,21 @@ Fatto:
 
 Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e si rigenera da solo a ogni commit sul codice. I file di documentazione vanno aggiornati a mano con `/graphify . --update`.
 
+Design system minimo fatto: variabili CSS, reset, classe `.container`, shell con header (solo il marchio) e footer. La navigazione comparirà man mano che esistono le pagine.
+
 Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubblicato mostra una pagina vuota.
 
 ## 7. Prossimi passi (in ordine)
 
-1. Impostare il design system minimo: variabili CSS, font, reset, layout (header, footer).
-2. Internazionalizzazione it/en con rilevamento della lingua del browser e selettore (vedi punti aperti per la tecnica).
-3. Scrivere i modelli e un servizio che legge i contenuti (giochi, post).
-4. Pagina elenco giochi (`/giochi`, vuota finché non esistono giochi) e pagina modello del singolo gioco, base per le pagine future.
-5. Home, blog, chi sono.
-6. Collegare i download alle GitHub Releases.
-7. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.
+1. Internazionalizzazione it/en con rilevamento della lingua del browser e selettore (vedi punti aperti per la tecnica).
+2. Scrivere i modelli e un servizio che legge i contenuti (giochi, post).
+3. Pagina elenco giochi (`/giochi`, vuota finché non esistono giochi) e pagina modello del singolo gioco, base per le pagine future.
+4. Home, blog, chi sono.
+5. Collegare i download alle GitHub Releases.
+6. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.
 
 ## 8. Punti aperti
 
-- **Formato dei post**: Markdown con libreria di rendering oppure HTML/componenti scritti a mano.
 - **Stile grafico del logo** e palette definitiva.
 - Dominio personale al posto di `github.io`: per ora no.
 - Analytics e cookie: nessuno per ora.

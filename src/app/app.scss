@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet + * {
+  flex: 1;
+}
+
+header,
+footer {
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-border);
+}
+
+header {
+  border-top: 0;
+}
+
+footer {
+  border-bottom: 0;
+  padding-block: var(--space-4);
+  color: var(--color-muted);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-3);
+}
+
+.brand {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  &:hover {
+    color: var(--color-coral);
+  }
+}
