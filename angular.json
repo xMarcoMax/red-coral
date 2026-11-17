@@ -29,7 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": ["@fontsource/caprasimo/latin-400.css", "src/styles.scss"]
           },
           "configurations": {
             "production": {

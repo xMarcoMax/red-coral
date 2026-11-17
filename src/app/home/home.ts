@@ -15,6 +15,8 @@ import { TranslocoPipe } from '@jsverse/transloco';
       padding-block: var(--space-5);
     }
     h1 {
+      font-family: var(--font-brand);
+      font-weight: 400;
       color: var(--color-coral);
     }
   `,
