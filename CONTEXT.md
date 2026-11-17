@@ -12,7 +12,7 @@ Il sito serve a:
 - rendere scaricabili i giochi e le build alfa/beta, con le varie versioni;
 - pubblicare aggiornamenti in stile blog (devlog, novità, note di rilascio).
 
-Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: **Transloco** (`@jsverse/transloco`), traduzioni in `public/i18n/{en,it}.json`, caricate con URL relativo (rispetta il base href). Logica in `src/app/i18n/language.service.ts` (scelta salvata in `localStorage`, altrimenti lingua del browser) e selettore EN/IT nell'header. I testi nei template usano la pipe `transloco`; ogni testo nuovo va aggiunto in entrambi i file JSON.
+Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: **Transloco** (`@jsverse/transloco`), traduzioni in `public/i18n/{en,it}.json`, caricate con URL relativo (rispetta il base href). Logica in `src/app/i18n/language.service.ts` (scelta salvata in `localStorage`, altrimenti lingua del browser) e selettore a tendina nell'header (icona del mondo, lingue con il loro nome: English, Italiano). I testi nei template usano la pipe `transloco`; ogni testo nuovo va aggiunto in entrambi i file JSON.
 
 ## 2. Stack e hosting
 
