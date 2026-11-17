@@ -61,7 +61,7 @@ Ispirata al corallo rosso e al mare di Alghero.
   - bianco sporco per il testo
   - tinta mare secondaria per i dettagli
 - **Tipografia**: da scegliere (un titolo con carattere + un testo molto leggibile).
-- **Logo**: l'immagine verrà generata con Codex. Idea: un corallo rosso come un albero spoglio, con un tronco spesso alla base che si apre verso l'alto in rami sempre più sottili. Lo stile grafico non è deciso.
+- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Il nome sotto il logo va in Caprasimo con le lettere alternate giallo (`#F2B705`) e rosso (`#C62F2B`), come le bande aragonesi di Alghero; la versione con la scritta è in preparazione.
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 
