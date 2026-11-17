@@ -12,7 +12,7 @@ Il sito serve a:
 - rendere scaricabili i giochi e le build alfa/beta, con le varie versioni;
 - pubblicare aggiornamenti in stile blog (devlog, novità, note di rilascio).
 
-Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: **Transloco** (`@jsverse/transloco`), traduzioni in `public/i18n/{en,it}.json`, caricate con URL relativo (rispetta il base href). Logica in `src/app/i18n/language.service.ts` (scelta salvata in `localStorage`, altrimenti lingua del browser) e selettore a tendina nell'header (icona del mondo, lingue con il loro nome: English, Italiano). I testi nei template usano la pipe `transloco`; ogni testo nuovo va aggiunto in entrambi i file JSON.
+Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: **Transloco** (`@jsverse/transloco`), traduzioni in `public/i18n/{en,it}.json`, caricate con URL relativo (rispetta il base href). Logica in `src/app/i18n/language.service.ts` (scelta salvata in `localStorage`, altrimenti lingua del browser) e selettore a tendina nell'header (icona del mondo; voci con il nome nella propria lingua e la bandierina a destra, `public/flags/`; la lingua attiva ha una barretta corallo a sinistra alta quanto il testo). I testi nei template usano la pipe `transloco`; ogni testo nuovo va aggiunto in entrambi i file JSON.
 
 ## 2. Stack e hosting
 
@@ -41,7 +41,7 @@ Vincoli di GitHub Pages:
 
 **Layout dell'elenco `/giochi` (deciso)**: una riga rettangolare per gioco, tutta cliccabile (bordo corallo al passaggio del mouse). A sinistra l'icona del gioco (quadrata, bordi arrotondati, circa 96 px). A destra due testi uno sopra l'altro: sopra il titolo; sotto una brevissima descrizione, poi un trattino e il genere. La descrizione si tronca con "…" su una riga, il genere non si tronca. Su telefono la riga resta uguale con l'icona più piccola.
 
-**Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`. Il nome del file nel link non si traduce.
+**Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`; lo screenshot segnaposto (16:9, con il simbolo) è `public/games/game-template/screenshot-1.svg`, inserito nel testo per mostrare come appaiono le immagini di gioco (`screenshots` in `games.data.ts`). Il nome del file nel link non si traduce.
 
 Navigazione nell'header: Home, Giochi, Chi siamo (blog quando esiste). Ogni altra route torna alla home. I giochi sono in `src/app/games/games.data.ts` (solo lo slug); i testi di ogni gioco in `public/i18n/*.json` sotto `games.items.<slug>`. Per aggiungere un gioco: slug, icona e download nell'elenco + testi in entrambe le lingue.
 
@@ -66,7 +66,7 @@ Ispirata al corallo rosso e al mare di Alghero.
   - bianco sporco per il testo
   - tinta mare secondaria per i dettagli
 - **Tipografia**: da scegliere (un titolo con carattere + un testo molto leggibile).
-- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png` nella radice del progetto, fuori da `public/`, non ancora usata nel sito. Sorgenti nella radice (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
+- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. File in `public/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi), `favicon.ico`, `apple-touch-icon.png`. Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png` nella radice del progetto, fuori da `public/`, non ancora usata nel sito. Versioni vettoriali (SVG a colori piatti, un livello per colore, ottenute dai PNG con potrace): `red-coral.svg` (simbolo), `red-coral-text.svg` (scritta), `red-coral-vertical-logo.svg` (insieme). Non ancora usate nel sito, che usa il PNG `public/logo.png`: sono pronte per sostituirlo e per generare le icone. Sorgenti raster nella radice (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 

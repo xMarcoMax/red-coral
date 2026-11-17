@@ -26,6 +26,11 @@ import { GAMES } from './games.data';
           <dd>{{ 'games.items.' + g.slug + '.platforms' | transloco }}</dd>
         </dl>
         <p>{{ 'games.items.' + g.slug + '.about' | transloco }}</p>
+        @for (s of g.screenshots; track s) {
+          <figure>
+            <img [src]="s" [alt]="'games.detail.screenshotAlt' | transloco" width="1280" height="720" />
+          </figure>
+        }
         <h2>{{ 'games.detail.downloads' | transloco }}</h2>
         @if (g.downloads.length) {
           <ul>
@@ -69,6 +74,18 @@ import { GAMES } from './games.data';
     .genre {
       margin: 0;
       color: var(--color-muted);
+    }
+    figure {
+      margin: var(--space-4) 0;
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      padding: 0;
+      background: none;
+      border-radius: var(--radius);
     }
     dl {
       display: grid;

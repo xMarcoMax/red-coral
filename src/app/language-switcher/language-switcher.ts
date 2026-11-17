@@ -5,6 +5,7 @@ import { Lang, LanguageService } from '../i18n/language.service';
 
 // Nomi nella loro lingua: chi non capisce la lingua attiva riconosce comunque la propria
 const NAMES: Record<Lang, string> = { en: 'English', it: 'Italiano' };
+const FLAGS: Record<Lang, string> = { en: 'flags/gb.svg', it: 'flags/it.svg' };
 
 @Component({
   selector: 'app-language-switcher',
@@ -29,7 +30,8 @@ const NAMES: Record<Lang, string> = { en: 'English', it: 'Italiano' };
         @for (l of lang.langs; track l) {
           <li>
             <button type="button" [attr.aria-current]="l === active() ? 'true' : null" (click)="choose(l)">
-              {{ names[l] }}
+              <span>{{ names[l] }}</span>
+              <img [src]="flags[l]" alt="" width="21" height="14" />
             </button>
           </li>
         }
@@ -69,14 +71,34 @@ const NAMES: Record<Lang, string> = { en: 'English', it: 'Italiano' };
       border-radius: var(--radius);
     }
     li button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
       width: 100%;
       text-align: left;
       border: 0;
       padding: var(--space-2) var(--space-3);
     }
+    li img {
+      width: 1.3rem;
+      height: 0.9rem;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    /* barretta alta quanto il testo: stessa distanza dall'alto e dal basso del padding */
     li button[aria-current='true'] {
       color: var(--color-text);
-      box-shadow: inset 2px 0 var(--color-coral);
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: var(--space-2);
+        bottom: var(--space-2);
+        width: 2px;
+        background: var(--color-coral);
+      }
     }
   `,
 })
@@ -86,6 +108,7 @@ export class LanguageSwitcher {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
   protected readonly names = NAMES;
+  protected readonly flags = FLAGS;
   protected readonly open = signal(false);
   protected readonly active = toSignal(this.transloco.langChanges$, {
     initialValue: this.transloco.getActiveLang(),

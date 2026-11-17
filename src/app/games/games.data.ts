@@ -8,6 +8,8 @@ export interface Game {
   slug: string;
   /** Percorso relativo a public/ */
   icon: string;
+  /** Percorsi relativi a public/ */
+  screenshots: string[];
   downloads: Download[];
 }
 
@@ -16,6 +18,7 @@ export const GAMES: Game[] = [
   {
     slug: 'game-template',
     icon: 'logo.png',
+    screenshots: ['games/game-template/screenshot-1.svg'],
     downloads: [{ label: 'Test Download', file: 'downloads/test-download.txt' }],
   },
 ];

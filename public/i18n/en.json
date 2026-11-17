@@ -19,7 +19,8 @@
       "status": "Status",
       "platforms": "Platforms",
       "downloads": "Downloads",
-      "noDownloads": "No downloads available yet."
+      "noDownloads": "No downloads available yet.",
+      "screenshotAlt": "Game screenshot"
     },
     "items": {
       "game-template": {
