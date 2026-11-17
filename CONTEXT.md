@@ -12,7 +12,7 @@ Il sito serve a:
 - rendere scaricabili i giochi e le build alfa/beta, con le varie versioni;
 - pubblicare aggiornamenti in stile blog (devlog, novità, note di rilascio).
 
-Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: libreria di traduzione a runtime (da scegliere tra le compatibili con Angular 22, es. Transloco o ngx-translate).
+Lingue: **italiano e inglese**. Si sceglie in automatico dalla lingua del browser (`it` → italiano, `en` → inglese, qualsiasi altra lingua → inglese). Un selettore nel sito permette di cambiarla in tempo reale (senza ricaricare), e la scelta va ricordata. Tecnica: **Transloco** (`@jsverse/transloco`), traduzioni in `public/i18n/{en,it}.json`, caricate con URL relativo (rispetta il base href). Logica in `src/app/i18n/language.service.ts` (scelta salvata in `localStorage`, altrimenti lingua del browser) e selettore EN/IT nell'header. I testi nei template usano la pipe `transloco`; ogni testo nuovo va aggiunto in entrambi i file JSON.
 
 ## 2. Stack e hosting
 
@@ -80,16 +80,17 @@ Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e
 
 Design system minimo fatto: variabili CSS, reset, classe `.container`, shell con header (solo il marchio) e footer. La navigazione comparirà man mano che esistono le pagine.
 
+Internazionalizzazione it/en fatta (rilevamento browser, selettore, lingua ricordata). Verificata con build e test, non ancora aperta in un browser.
+
 Non c'è ancora: nessuna pagina, nessun contenuto, nessuno stile, il sito pubblicato mostra una pagina vuota.
 
 ## 7. Prossimi passi (in ordine)
 
-1. Internazionalizzazione it/en con rilevamento della lingua del browser e selettore (vedi punti aperti per la tecnica).
-2. Scrivere i modelli e un servizio che legge i contenuti (giochi, post).
-3. Pagina elenco giochi (`/giochi`, vuota finché non esistono giochi) e pagina modello del singolo gioco, base per le pagine future.
-4. Home, blog, chi sono.
-5. Collegare i download alle GitHub Releases.
-6. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.
+1. Scrivere i modelli e un servizio che legge i contenuti (giochi, post).
+2. Pagina elenco giochi (`/giochi`, vuota finché non esistono giochi) e pagina modello del singolo gioco, base per le pagine future.
+3. Home, blog, chi sono.
+4. Collegare i download alle GitHub Releases.
+5. Rifinire: SEO di base (title, meta, Open Graph), favicon, RSS per il blog.
 
 ## 8. Punti aperti
 

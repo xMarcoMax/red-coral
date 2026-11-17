@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { LanguageSwitcher } from './language-switcher/language-switcher';
 
 @Component({
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, LanguageSwitcher],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
