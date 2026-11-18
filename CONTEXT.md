@@ -35,9 +35,9 @@ Vincoli di GitHub Pages:
 |---|---|---|
 | `/` | Home: nome, una frase e due showreel animati uno sopra l'altro (vedi sotto) | fatta |
 | `/games` | Elenco dei giochi: un link per gioco | fatta |
-| `/games/:slug` | Scheda gioco: icona, dati, testo con screenshot, download. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile | modello segnaposto (`game-template`) |
+| `/games/:slug` | Scheda gioco: icona, dati, testo con screenshot, download. Parte da un **modello base** condiviso; ogni gioco potrà avere il proprio stile | fatta; modello in `templates/games/template/` |
 | `/about-us` | Chi c'è dietro Red Coral, contatti, link social | solo "Work in progress" |
-| `/blog`, `/blog/:slug` | Elenco post (titolo + inizio del testo troncato) e singolo post | fatta, con post modello `post-template` |
+| `/blog`, `/blog/:slug` | Elenco post (titolo + inizio del testo troncato) e singolo post | fatta; modello in `templates/posts/template/` |
 
 Gli indirizzi delle pagine sono in inglese, come il codice, anche se il sito è bilingue.
 
@@ -45,7 +45,7 @@ Gli indirizzi delle pagine sono in inglese, come il codice, anche se il sito è 
 
 **Layout dell'elenco `/games` (deciso)**: una riga rettangolare per gioco, tutta cliccabile (bordo corallo al passaggio del mouse). A sinistra l'icona del gioco (quadrata, bordi arrotondati, circa 96 px). A destra due testi uno sopra l'altro: sopra il titolo; sotto una brevissima descrizione, poi un trattino e il genere. La descrizione si tronca con "…" su una riga, il genere non si tronca. Su telefono la riga resta uguale con l'icona più piccola.
 
-**Modello della pagina gioco** (`game-template`, testi inventati da sostituire): icona, titolo, genere, descrizione, stato, piattaforme, testo, elenco download. Il download di prova è `public/downloads/test-download.txt`; lo screenshot segnaposto (16:9, con il simbolo) è `public/content/games/game-template/screenshot-1.svg`, inserito nel testo con la sintassi delle immagini, a destra con il testo che scorre attorno (larghezza massima circa 24 rem, a tutta larghezza su telefono) e una didascalia, per mostrare come appaiono le immagini di gioco. Il nome del file nel link non si traduce.
+**Modelli per nuovi contenuti**: `templates/games/template/` e `templates/posts/template/` stanno fuori da `public/`, quindi non si pubblicano e non compaiono mai nel sito. Si copiano in `public/content/...` per creare un gioco o un post (istruzioni in `templates/README.md`). Mostrano ogni campo e ogni elemento Markdown (sezione, elenco, immagine a destra e a tutta larghezza, download) con testi segnaposto, e `npm run test:scripts` verifica che restino validi.
 
 **Home**: titolo "Red Coral" e una frase, poi due showreel (`src/app/home/showreel.ts`): "Ultimi giochi" e "Ultimi post", uno sopra l'altro. Ognuno mostra gli ultimi 3 contenuti per `date` (più recente prima), uno alla volta per circa 5,5 secondi, con dissolvenza verso sinistra; frecce e puntini scorrono a mano, e l'animazione si ferma con mouse, tocco o focus (e non parte con "riduci animazioni"). Se i contenuti sono meno di 3, i posti mancanti sono schede vuote con `public/images/placeholder.svg`. Nei giochi `date` è un dato interno (ultimo aggiornamento, non si vede), da aggiornare a ogni modifica della pagina.
 
@@ -72,7 +72,7 @@ Ispirata al corallo rosso e al mare di Alghero.
   - bianco sporco per il testo
   - tinta mare secondaria per i dettagli
 - **Tipografia**: da scegliere (un titolo con carattere + un testo molto leggibile).
-- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. **Tutte le immagini del sito che non appartengono a una pagina di gioco o di post stanno in `public/images/`** (si pubblicano con il sito): `logo/` (tutte le versioni del logo), `flags/` (bandierine della tendina delle lingue), `favicon.ico`, `apple-touch-icon.png`, `placeholder.svg` (scheda vuota degli showreel). Le immagini di un gioco o di un post restano nella sua cartella in `public/content/`. In `public/images/logo/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi; è quello dell'header). Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png`, non ancora usata nel sito. Versioni vettoriali (SVG a colori piatti, un livello per colore, ottenute dai PNG con potrace): `red-coral.svg` (simbolo), `red-coral-text.svg` (scritta, usata nell'header con testo alternativo "Red Coral"), `red-coral-vertical-logo.svg` (insieme). Versione orizzontale (simbolo a sinistra, scritta a destra, stessa base e stesse proporzioni dell'header del sito: scritta al 70% dell'altezza del simbolo): `red-coral-horizontal-logo.svg` e `.png` (2855×620, trasparente), ottenuta componendo `red-coral.svg` e `red-coral-text.svg`. `red-coral.svg` (simbolo) è pronto per sostituire il PNG dell'header e per generare le icone. Sorgenti raster (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
+- **Logo**: corallo rosso su roccia grigia, stile piatto (generato con Codex). Definitivo. **Tutte le immagini del sito che non appartengono a una pagina di gioco o di post stanno in `public/images/`** (si pubblicano con il sito): `logo/` (tutte le versioni del logo), `flags/` (bandierine della tendina delle lingue), `favicon.ico`, `apple-touch-icon.png`, `placeholder.svg` (scheda vuota degli showreel). Le immagini di un gioco o di un post restano nella sua cartella in `public/content/`. In `public/images/logo/`: `logo.png` (simbolo senza scritta, sfondo trasparente, ripulito dalla polvere dei bordi; solo riferimento). Versione con scritta (simbolo + "Red Coral" in Caprasimo con lettere alternate rosso e giallo come le bande aragonesi di Alghero, R rossa): `red-coral-vertical-logo.png`, non ancora usata nel sito. Versioni vettoriali (SVG a colori piatti, un livello per colore, ottenute dai PNG con potrace): `red-coral.svg` (simbolo), `red-coral-text.svg` (scritta, usata nell'header con testo alternativo "Red Coral"), `red-coral-vertical-logo.svg` (insieme). Versione orizzontale (simbolo a sinistra, scritta a destra, stessa base e stesse proporzioni dell'header del sito: scritta al 70% dell'altezza del simbolo): `red-coral-horizontal-logo.svg` e `.png` (2855×620, trasparente), ottenuta componendo `red-coral.svg` e `red-coral-text.svg`. `red-coral.svg` (simbolo) è quello dell'header. **Regola: per immagini e icone del sito si usano gli SVG; i PNG restano nel progetto solo come riferimento** (eccezioni: `favicon.ico`, `apple-touch-icon.png` e le illustrazioni dei giochi, che sono raster). Sorgenti raster (ripulite, definitive): `red-coral.png` (simbolo approvato) e `red-coral-text.png` (testo).
 - **Responsive**: mobile first, il sito deve funzionare bene da telefono.
 - **Accessibilità**: contrasto sufficiente, navigazione da tastiera, testo alternativo alle immagini.
 
@@ -84,7 +84,7 @@ Fatto:
 - Sito online su GitHub Pages con deploy automatico via Actions (repo `xMarcoMax/red-coral`, pubblico).
 - Design system minimo (variabili CSS, reset, `.container`), header con simbolo e scritta del logo, footer, selettore di lingua it/en.
 - Home con i due showreel, elenco e pagina dei giochi, blog con elenco e pagina dei post, tutti basati su file Markdown (vedi §3). Chi siamo è ancora un segnaposto.
-- Primo gioco vero: **Beatch Slash!** (`public/content/games/beatch-slash/`): tower defense a ondate 2D top-down, in sviluppo in Godot (progetto in `C:\Users\stefa\Documents\Progetti\GodotProjects\beatch-slash!`). Per ora la pagina ha solo icona (la copertina quadrata, ridotta a 512 px; l'originale `beatch-slash-cover-square.png` sta nella radice di questo progetto), titolo, genere e descrizione; stato, piattaforme, testo e download verranno dopo. `game-template` e `post-template` restano come modelli.
+- Primo gioco vero: **Beatch Slash!** (`public/content/games/beatch-slash/`): tower defense a ondate 2D top-down, in sviluppo in Godot (progetto in `C:\Users\stefa\Documents\Progetti\GodotProjects\beatch-slash!`). Per ora la pagina ha solo icona (la copertina quadrata, ridotta a 512 px; l'originale `beatch-slash-cover-square.png` sta nella radice di questo progetto), titolo, genere e descrizione; stato, piattaforme, testo e download verranno dopo. I modelli stanno in `templates/`.
 - Build e test passano. Le pagine sono state viste in un browser solo con screenshot di prova.
 
 Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e si rigenera da solo a ogni commit sul codice. I file di documentazione vanno aggiornati a mano con `/graphify . --update`.
@@ -93,13 +93,17 @@ Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e
 
 1. Chi siamo (contenuti veri) e testi definitivi della home.
 2. Collegare i download alle GitHub Releases.
-3. Rifinire: SEO di base (title, meta, Open Graph), RSS per il blog, simbolo SVG nell'header.
+3. Nessun altro passo fissato. (SEO rimandata, vedi §8. RSS: scartato.)
 
 ## 8. Punti aperti
 
-- **Stile grafico del logo** e palette definitiva.
+- **Palette definitiva** (il logo, con e senza testo, è approvato).
 - Dominio personale al posto di `github.io`: per ora no.
-- Analytics e cookie: nessuno per ora.
+- Analytics: se mai, solo un servizio open source senza cookie per sapere se e quando il sito viene visitato (candidato: GoatCounter, gratuito e ospitato). Cookie, consenso, SEO e pubblicità: rimandati a un eventuale cambio di hosting.
+- **Chi siamo**: servono i testi dell'autore (oggi solo "Work in progress").
+- **Beatch Slash!**: mancano stato, piattaforme, testo, screenshot e download; serve prima una build giocabile.
+- **Font** per titoli e testi: da scegliere.
+- `beatch-slash-cover-square.png` nella radice: non tracciato da git, da committare o spostare.
 - Giochi, screenshot, social e contatti: non esiste ancora nulla di ufficiale, quindi per ora segnaposto.
 
 ## 9. Convenzioni di lavoro
@@ -107,5 +111,5 @@ Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e
 - Componenti standalone, con `signal` per lo stato locale. Un componente per cartella.
 - Nomi di file, route e codice in inglese.
 - Stili SCSS per componente; i valori comuni vengono sempre da variabili CSS globali.
-- Comandi: `npm start` (sviluppo), `npm run build`, `npm test`.
+- Comandi: `npm start` (sviluppo), `npm run preview` (sviluppo con i modelli visibili in `/games/anteprima-modello` e `/blog/anteprima-modello`), `npm run build`, `npm test`.
 - Questo file va aggiornato **nello stesso momento** in cui cambia qualcosa che descrive.

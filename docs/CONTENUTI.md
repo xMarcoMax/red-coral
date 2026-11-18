@@ -7,18 +7,19 @@ Questa guida serve a chi scrive i contenuti del sito (l'autore o Claude). Post d
 | | Post del blog | Gioco |
 |---|---|---|
 | Cartella | `public/content/posts/<nome>/` | `public/content/games/<nome>/` |
-| Modello da copiare | `public/content/posts/post-template/` | `public/content/games/game-template/` |
+| Modello da copiare | `templates/posts/template/` | `templates/games/template/` |
 | Elenco | `/blog` | `/games` |
 | Pagina | `/blog/<nome>` | `/games/<nome>` |
 
 - Ogni cartella contiene `it.md` e/o `en.md` e le immagini. Il testo della pagina è il Markdown; i dati stanno in cima al file, nel front matter (vedi sotto).
+- I modelli stanno in `templates/`, fuori da `public/`, quindi **non vengono pubblicati**. Vedi `templates/README.md`. Per vederli nel sito: `npm run preview` (compaiono come `anteprima-modello`, solo in locale: le copie sono ignorate da git).
 - Le pagine sono sempre gli stessi componenti: non si crea mai una pagina Angular per un nuovo contenuto.
 - L'elenco viene da `public/content/<posts|games>/index.json`, che **non si scrive a mano**: lo genera `scripts/content-index.mjs` leggendo l'intestazione di ogni file. Parte da solo con `npm start` e `npm run build`, ed è ignorato da git. Se usi `ng serve` direttamente, lancia prima `npm run content`.
 - Le cartelle stanno sotto `content` apposta: su GitHub Pages un indirizzo come `/games/` aprirebbe la cartella invece della pagina del sito. Non creare in `public/` cartelle con lo stesso nome di una pagina (`blog`, `games`, `about-us`).
 
 ## Aggiungere un post o un gioco
 
-1. Copia la cartella modello e dai alla copia il nome del contenuto. Il nome finisce nell'indirizzo: minuscolo, parole separate da trattini, niente accenti (esempi `primo-devlog`, `pax-historia`).
+1. Copia la cartella modello in `public/content/posts/` o `public/content/games/` e dai alla copia il nome del contenuto. Il nome finisce nell'indirizzo: minuscolo, parole separate da trattini, niente accenti (esempi `primo-devlog`, `pax-historia`).
 2. Modifica `it.md` e, se vuoi la versione inglese, `en.md` (vedi "Lingue").
 3. Metti le immagini nella stessa cartella e scrivile nel testo con il solo nome del file. Cancella quelle del modello se non le usi.
 4. Prova in locale con `npm start` e apri `/blog` o `/games`.
@@ -67,6 +68,7 @@ Testo della pagina del gioco...
 
 - `date`, `icon` e `download` devono essere **uguali** in `it.md` e in `en.md`: se sono diversi `npm run content` si ferma. `title`, `genre`, `status`, `platforms` e `description` si scrivono nella lingua del file.
 - **I file grandi non vanno nel repo**: caricali come GitHub Release e usa il link (vedi `CONTEXT.md` §2).
+- Nei valori dell'intestazione evita i due punti seguiti da spazio (`: `): l'anteprima Markdown dell'editor li legge come YAML e segnala un errore. Se servono, metti il valore tra virgolette (il sito le toglie).
 - Se manca un campo o l'intestazione, `npm run content` si ferma con un messaggio che dice quale file correggere.
 
 ## Scrivere il testo (Markdown)
@@ -101,7 +103,7 @@ Su telefono le immagini a destra e a sinistra diventano a tutta larghezza. Il no
 
 ## Per Claude: checklist quando l'autore dà un testo
 
-1. Crea la cartella da copia del modello giusto (`post-template` o `game-template`), con un nome in minuscolo e trattini.
+1. Crea la cartella da copia del modello giusto (`templates/posts/template` o `templates/games/template`), con un nome in minuscolo e trattini.
 2. Scrivi `it.md` con il testo dell'autore (senza cambiarlo, solo formattazione Markdown) e `en.md` con la traduzione. Stessi `date`, `icon` e `download`, stesse immagini. Se l'autore modifica una pagina esistente, aggiorna `date` in tutti e due i file.
 3. Copia le immagini indicate dall'autore nella cartella e scrivi una didascalia sensata, nella lingua di ogni file.
 4. Esegui `npm run content`: deve stampare il numero di elementi per raccolta senza errori. Poi `npm run test:scripts` e `npx ng test --watch=false` se hai toccato il codice.

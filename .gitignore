@@ -49,3 +49,6 @@ Thumbs.db
 # indici dei contenuti generati da scripts/content-index.mjs
 /public/content/posts/index.json
 /public/content/games/index.json
+
+# anteprima dei modelli (npm run preview)
+/public/content/*/anteprima-modello/

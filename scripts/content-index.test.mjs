@@ -70,3 +70,8 @@ test('gioco: stato e piattaforme sono facoltativi', () => {
   const [g] = buildIndex(folder({ 'g/it.md': md }), 'games');
   assert.deepEqual(g.it, { excerpt: '', title: 'T', genre: 'G' });
 });
+
+test('i modelli in templates/ sono validi', () => {
+  assert.equal(buildIndex('templates/posts', 'posts').length, 1);
+  assert.equal(buildIndex('templates/games', 'games').length, 1);
+});
