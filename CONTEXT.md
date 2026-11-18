@@ -84,7 +84,7 @@ Fatto:
 - Sito online su GitHub Pages con deploy automatico via Actions (repo `xMarcoMax/red-coral`, pubblico).
 - Design system minimo (variabili CSS, reset, `.container`), header con simbolo e scritta del logo, footer, selettore di lingua it/en.
 - Home con i due showreel, elenco e pagina dei giochi, blog con elenco e pagina dei post, tutti basati su file Markdown (vedi §3). Chi siamo è ancora un segnaposto.
-- Primo gioco vero: **Beatch Slash!** (`public/content/games/beatch-slash/`): tower defense a ondate 2D top-down, in sviluppo in Godot (progetto in `C:\Users\stefa\Documents\Progetti\GodotProjects\beatch-slash!`). Per ora la pagina ha solo icona (la copertina quadrata, ridotta a 512 px; l'originale `beatch-slash-cover-square.png` sta nella radice di questo progetto), titolo, genere e descrizione; stato, piattaforme, testo e download verranno dopo. I modelli stanno in `templates/`.
+- Primo gioco vero: **Beatch Slash!** (`public/content/games/beatch-slash/`): tower defense a ondate 2D top-down, in sviluppo in Godot (progetto in `C:\Users\stefa\Documents\Progetti\GodotProjects\beatch-slash!`). La pagina ha icona (la copertina quadrata, ridotta a 512 px), dati, una **prima bozza di testo** (scritta dai documenti del progetto del gioco, da rivedere) e nessun download né screenshot. I modelli stanno in `templates/`.
 - Build e test passano. Le pagine sono state viste in un browser solo con screenshot di prova.
 
 Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e si rigenera da solo a ogni commit sul codice. I file di documentazione vanno aggiornati a mano con `/graphify . --update`.
@@ -101,9 +101,8 @@ Il grafo della conoscenza (graphify) vive in `graphify-out/`, ignorato da git, e
 - Dominio personale al posto di `github.io`: per ora no.
 - Analytics: se mai, solo un servizio open source senza cookie per sapere se e quando il sito viene visitato (candidato: GoatCounter, gratuito e ospitato). Cookie, consenso, SEO e pubblicità: rimandati a un eventuale cambio di hosting.
 - **Chi siamo**: servono i testi dell'autore (oggi solo "Work in progress").
-- **Beatch Slash!**: mancano stato, piattaforme, testo, screenshot e download; serve prima una build giocabile.
+- **Beatch Slash!**: rivedere la bozza del testo (e la piattaforma: indicata solo Windows); mancano screenshot e download, serve prima una build giocabile.
 - **Font** per titoli e testi: da scegliere.
-- `beatch-slash-cover-square.png` nella radice: non tracciato da git, da committare o spostare.
 - Giochi, screenshot, social e contatti: non esiste ancora nulla di ufficiale, quindi per ora segnaposto.
 
 ## 9. Convenzioni di lavoro

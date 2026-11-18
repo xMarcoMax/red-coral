@@ -2,7 +2,7 @@
 // Le raccolte sono "posts" (blog) e "games". Parte da sola con `npm start` e `npm run build`.
 // Stanno sotto "content" perché su GitHub Pages una cartella con lo stesso nome di una route (es. /games/)
 // aprirebbe la cartella e non la pagina Angular.
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -85,6 +85,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   try {
     for (const collection of Object.keys(REQUIRED)) {
       const dir = join('public', 'content', collection);
+      mkdirSync(dir, { recursive: true }); // git non tiene le cartelle vuote: senza contenuti la raccolta non esiste dopo il clone
       const items = buildIndex(dir, collection);
       writeFileSync(join(dir, 'index.json'), JSON.stringify(items, null, 2) + '\n');
       console.log(`${collection}: ${items.length} nell'indice`);
