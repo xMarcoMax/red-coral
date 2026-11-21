@@ -37,6 +37,8 @@ Il gioco è ancora in sviluppo. Oggi ci sono menu, tutorial, ondate, negozio e g
 
 ## Provalo
 
-La versione 0.1.0 alfa è scaricabile qui sotto, nella sezione download. È una prima versione: aspettati bug e cose incomplete.
+Prima versione giocabile (alfa) di Beatch Slash!, per Windows.
 
-Il file è uno zip con dentro l'eseguibile: estrailo e avvialo. Il gioco non è firmato, quindi Windows potrebbe mostrare l'avviso "Windows ha protetto il PC": clicca su "Ulteriori informazioni" e poi su "Esegui comunque".
+Estrai lo zip e avvia `Beatch Slash!.exe`. Se Windows dà problemi, clicca su "Ulteriori informazioni" e poi su "Esegui comunque".
+
+È una prima versione: aspettati bug e parti incomplete.

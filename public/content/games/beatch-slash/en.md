@@ -37,6 +37,8 @@ The game is still in development. Right now it has menus, a tutorial, waves, a s
 
 ## Try it
 
-Version 0.1.0 alpha can be downloaded below, in the downloads section. It is an early build: expect bugs and unfinished parts.
+First playable (alpha) build of Beatch Slash!, for Windows.
 
-The file is a zip containing the executable: extract it and run it. The game is not signed, so Windows may show a "Windows protected your PC" warning: click "More info", then "Run anyway".
+Extract the zip and run `Beatch Slash!.exe`. If Windows gives you problems, click "More info", then "Run anyway".
+
+This is an early build: expect bugs and unfinished parts.
