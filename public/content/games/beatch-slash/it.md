@@ -1,11 +1,12 @@
 ---
 title: Beatch Slash!
 icon: icon.png
-date: 2026-11-18
+date: 2026-11-21
 genre: Tower defense a ondate
-status: In sviluppo
+status: Alfa
 platforms: Windows
 description: Difendi il tuo ragazzo dalle ragazze della spiaggia a colpi di palle di sabbia
+download: Windows 0.1.0 alfa | https://github.com/xMarcoMax/red-coral/releases/download/0.1.0/BeatchSlash-0.1.0-windows.zip
 ---
 Il tuo ragazzo è bellissimo. Il problema è che se ne sono accorte anche tutte le altre ragazze della spiaggia. Tocca a te difenderlo, armata di una sola cosa: palle di sabbia.
 
@@ -34,4 +35,8 @@ Il gioco è ancora in sviluppo. Oggi ci sono menu, tutorial, ondate, negozio e g
 - il bilanciamento di ondate e prezzi;
 - scenografia della spiaggia, interfaccia e animazioni.
 
-Quando ci sarà una versione da provare la troverai qui, nella sezione download.
+## Provalo
+
+La versione 0.1.0 alfa è scaricabile qui sotto, nella sezione download. È una prima versione: aspettati bug e cose incomplete.
+
+Il file è uno zip con dentro l'eseguibile: estrailo e avvialo. Il gioco non è firmato, quindi Windows potrebbe mostrare l'avviso "Windows ha protetto il PC": clicca su "Ulteriori informazioni" e poi su "Esegui comunque".
